@@ -1,19 +1,26 @@
-import { defineConfig } from "astro/config";
+import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
+
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
-import pagefind from "astro-pagefind";
-import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://blog.wahsun.org",
-  integrations: [sitemap(), mdx(), pagefind()],
-  vite: {
+   vite: {
     plugins: [tailwindcss()],
   },
   markdown: {
+    drafts: true,
     shikiConfig: {
-      theme: "css-variables",
-    },
+      theme: "css-variables"
+    }
   },
+  shikiConfig: {
+    wrap: true,
+    skipInline: false,
+    drafts: true
+  },
+  site: 'https://c92d58.github.io',
+  base: '/blog',
+  integrations: [sitemap(), mdx()]
 });
