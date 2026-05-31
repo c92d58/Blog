@@ -22,11 +22,12 @@
   font-family: Inter, sans-serif;
 }
 @supports (font-variation-settings: normal) {
-  /* Use variable font if supported */
   :root {
     font-family: InterVariable, sans-serif;
   }
 }
+
+/* Light theme (default) */
 :root {
   --astro-code-color-text: #000000;
   --astro-code-background: #f5f5f5;
@@ -39,4 +40,38 @@
   --astro-code-token-string-expression: #2522fc;
   --astro-code-token-punctuation: #ffffff;
   --astro-code-token-link: #ffffff;
+}
+
+/* Dark theme (auto) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-base-50: oklch(15% 0.01 280);
+    --color-base-100: oklch(20% 0.01 280);
+    --color-base-200: oklch(25% 0.01 280);
+    --color-base-300: oklch(35% 0.01 280);
+    --color-base-400: oklch(45% 0.01 280);
+    --color-base-500: oklch(55% 0.01 280);
+    --color-base-600: oklch(65% 0.01 280);
+    --color-base-700: oklch(75% 0.01 280);
+    --color-base-800: oklch(85% 0.01 280);
+    --color-base-900: oklch(92% 0.005 280);
+    --color-base-950: oklch(96% 0.003 280);
+
+    --astro-code-color-text: #e5e7eb;
+    --astro-code-background: #1e1e2e;
+    --astro-code-token-constant: #9cdcfe;
+    --astro-code-token-string: #ce9178;
+    --astro-code-token-comment: #6a9955;
+    --astro-code-token-keyword: #569cd6;
+    --astro-code-token-parameter: #e5e7eb;
+    --astro-code-token-function: #dcdcaa;
+    --astro-code-token-string-expression: #ce9178;
+    --astro-code-token-punctuation: #e5e7eb;
+    --astro-code-token-link: #569cd6;
+  }
+}
+
+/* Smooth color scheme transitions */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
