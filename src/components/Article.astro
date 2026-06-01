@@ -41,11 +41,11 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString("en-US", {
     <Heading as="h1">{title}</Heading>
     <p class="article-meta">
       <time datetime={date.toISOString()}>{formattedDate}</time>
-      {readingTime && <span class="reading-time">· {readingTime} min read</span>}
+      {readingTime && <span class="reading-time">· 閱讀時間 {readingTime} 分鐘</span>}
     </p>
     {updatedDate && (
       <p class="article-updated">
-        Updated <time datetime={updatedDate.toISOString()}>{formattedUpdatedDate}</time>
+        更新於 <time datetime={updatedDate.toISOString()}>{formattedUpdatedDate}</time>
       </p>
     )}
     {tags.length > 0 && (
@@ -65,7 +65,7 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString("en-US", {
       <div class="post-nav-prev">
         {prevPost && (
           <a href={`/posts/${prevPost.id}`} class="post-nav-link">
-            <span class="post-nav-label">← Newer</span>
+            <span class="post-nav-label">← 較新文章</span>
             <span class="post-nav-title">{prevPost.title}</span>
           </a>
         )}
@@ -73,7 +73,7 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString("en-US", {
       <div class="post-nav-next">
         {nextPost && (
           <a href={`/posts/${nextPost.id}`} class="post-nav-link post-nav-link--right">
-            <span class="post-nav-label">Older →</span>
+            <span class="post-nav-label">較舊文章 →</span>
             <span class="post-nav-title">{nextPost.title}</span>
           </a>
         )}

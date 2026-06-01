@@ -32,9 +32,9 @@ export async function getStaticPaths() {
 const { tag, posts, totalPages, currentPage } = Astro.props;
 ---
 
-<Layout title={`Posts tagged "${tag}" — BLOG`} description={`All posts tagged "${tag}" — Page ${currentPage}.`}>
+<Layout title={`標籤「${tag}」— 部落格`} description={`所有標籤為「${tag}」的文章 — 第 ${currentPage} 頁。`}>
   <section class="tag-page">
-    <Heading as="h1">Tagged: {tag}</Heading>
+    <Heading as="h1">標籤：{tag}</Heading>
     <ul class="post-list">
       {posts.map((post) => {
         const formattedDate = post.data.date.toLocaleDateString("en-US", {
@@ -55,14 +55,14 @@ const { tag, posts, totalPages, currentPage } = Astro.props;
     </ul>
     <nav class="pagination" aria-label="Pagination">
       {currentPage > 1 && (
-        <a href={currentPage === 2 ? `/tags/${tag}` : `/tags/${tag}/${currentPage - 1}`} class="pagination-link">&larr; Newer</a>
+        <a href={currentPage === 2 ? `/tags/${tag}` : `/tags/${tag}/${currentPage - 1}`} class="pagination-link">&larr; 較新文章</a>
       )}
-      <span class="pagination-info">Page {currentPage} of {totalPages}</span>
+      <span class="pagination-info">第 {currentPage} 頁，共 {totalPages} 頁</span>
       {currentPage < totalPages && (
-        <a href={`/tags/${tag}/${currentPage + 1}`} class="pagination-link">Older &rarr;</a>
+        <a href={`/tags/${tag}/${currentPage + 1}`} class="pagination-link">較舊文章 &rarr;</a>
       )}
     </nav>
-    <a href="/tags" class="back-link" aria-label="Back to all tags">← All tags</a>
+    <a href="/tags" class="back-link" aria-label="返回所有標籤">← 所有標籤</a>
   </section>
 </Layout>
 

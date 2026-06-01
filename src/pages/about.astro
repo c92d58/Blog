@@ -4,30 +4,32 @@ import Heading from "../components/Heading.astro";
 import Prose from "../components/Prose.astro";
 ---
 
-<Layout title="About — BLOG" description="About BLOG.">
+<Layout title="關於 — 部落格" description="關於這個部落格。">
   <script slot="head" type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    "name": "About BLOG",
-    "description": "About BLOG.",
+    "name": "關於這個部落格",
+    "description": "關於這個部落格。",
     "url": new URL("/about", Astro.site).href,
     "isPartOf": {
       "@type": "WebSite",
-      "name": "BLOG",
+      "name": "部落格",
       "url": Astro.site?.href,
     },
   })} />
   <section class="about">
-    <Heading as="h1">About</Heading>
+    <Heading as="h1">關於</Heading>
     <Prose>
       <p>
-        這是一個安靜的地方，可以寫關於技術、系統和我們周圍的世界——由WAHSUN建造。
+        這裡是 WAHSUN 的一方書寫角落，聊聊科技、系統，以及我們周遭的世界。
       </p>
       <p>
-        在這裡，您將找到有關自我托管、人工智能代理、DevOps實踐的帖子，以及偶爾對生活和哲學的反思。 內容是由好奇心和對構建而不是購買的偏好驅動的。
+        你會在裡找到關於自架伺服器、AI 代理、DevOps 實務的文章，
+        偶爾也有一些生活與哲學的反思。內容由好奇心驅動，
+        偏好動手打造勝過掏錢購買。
       </p>
       <p>
-        沒有時事通訊。 沒有彈出窗口。 沒有跟蹤。 只是寫作。
+        沒有電子報。沒有彈窗。沒有追蹤。只有文字。
       </p>
     </Prose>
   </section>

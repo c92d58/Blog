@@ -13,7 +13,7 @@ interface Props {
 
 const {
   title,
-  description = "A quiet place to read.",
+  description = "一方靜謐閱讀之地。",
   ogType = "website",
   ogImage = "/og/default.png",
 } = Astro.props;
@@ -44,7 +44,7 @@ const ogImageAbsolute = new URL(ogImage, Astro.site).href;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL.href} />
-    <meta property="og:site_name" content="BLOG" />
+    <meta property="og:site_name" content="部落格" />
     <meta property="og:image" content={ogImageAbsolute} />
 
     <!-- Twitter -->
@@ -56,7 +56,7 @@ const ogImageAbsolute = new URL(ogImage, Astro.site).href;
     <!-- JSON-LD -->
     <slot name="head" />
 
-    <link rel="alternate" type="application/rss+xml" title="BLOG" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="部落格" href="/rss.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -73,7 +73,7 @@ const ogImageAbsolute = new URL(ogImage, Astro.site).href;
     )}
   </head>
   <body>
-    <a href="#main-content" class="skip-link">Skip to content</a>
+    <a href="#main-content" class="skip-link">跳至主內容</a>
     <div class="page">
       <Nav />
       <main id="main-content">

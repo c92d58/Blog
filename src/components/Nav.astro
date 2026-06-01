@@ -5,9 +5,9 @@ const currentPath = Astro.url.pathname;
 <nav class="nav">
   <a href="/" class="nav-brand">BLOG</a>
   <div class="nav-links">
-    <a href="/tags" class:list={[{ active: currentPath.startsWith("/tags") }]}>Tags</a>
-    <a href="/search" class:list={[{ active: currentPath === "/search" || currentPath === "/search/" }]}>Search</a>
-    <a href="/about" class:list={[{ active: currentPath === "/about" || currentPath === "/about/" }]}>About</a>
+    <a href="/tags" class:list={[{ active: currentPath.startsWith("/tags") }]}>標籤</a>
+    <a href="/search" class:list={[{ active: currentPath === "/search" || currentPath === "/search/" }]}>搜尋</a>
+    <a href="/about" class:list={[{ active: currentPath === "/about" || currentPath === "/about/" }]}>關於</a>
     <a href="/rss.xml">RSS</a>
   </div>
 </nav>

@@ -13,9 +13,9 @@ for (const post of posts) {
 const tags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1]);
 ---
 
-<Layout title="Tags — BLOG" description="Browse posts by tag.">
+<Layout title="標籤 — 部落格" description="依標籤瀏覽文章。">
   <section class="tags-page">
-    <Heading as="h1">Tags</Heading>
+    <Heading as="h1">標籤</Heading>
     <ul class="tag-list">
       {tags.map(([tag, count]) => (
         <li>

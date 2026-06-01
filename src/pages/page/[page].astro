@@ -14,11 +14,11 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 const { page } = Astro.props;
 ---
 
-<Layout title={`Page ${page.currentPage} — BLOG`}>
+<Layout title={`第 ${page.currentPage} 頁 — 部落格`}>
   <section class="home">
     <header class="home-header">
-      <Heading as="h1">BLOG</Heading>
-      <p class="home-tagline">A quiet place to read — writing about systems, technology, and the world around us.</p>
+      <Heading as="h1">部落格</Heading>
+      <p class="home-tagline">一方靜謐閱讀之地——書寫系統、科技，以及我們周遭的世界。</p>
     </header>
     <ul class="post-list">
       {page.data.map((post) => {
@@ -47,11 +47,11 @@ const { page } = Astro.props;
     </ul>
     <nav class="pagination" aria-label="Pagination">
       {page.url.prev && (
-        <a href={page.currentPage === 2 ? "/" : page.url.prev} class="pagination-link">&larr; Newer</a>
+        <a href={page.currentPage === 2 ? "/" : page.url.prev} class="pagination-link">&larr; 較新文章</a>
       )}
-      <span class="pagination-info">Page {page.currentPage} of {page.lastPage}</span>
+      <span class="pagination-info">第 {page.currentPage} 頁，共 {page.lastPage} 頁</span>
       {page.url.next && (
-        <a href={page.url.next} class="pagination-link">Older &rarr;</a>
+        <a href={page.url.next} class="pagination-link">較舊文章 &rarr;</a>
       )}
     </nav>
   </section>

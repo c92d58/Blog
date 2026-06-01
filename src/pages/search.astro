@@ -3,20 +3,20 @@ import Layout from "../components/Layout.astro";
 import Heading from "../components/Heading.astro";
 ---
 
-<Layout title="Search — BLOG" description="Search posts on BLOG.">
+<Layout title="搜尋 — 部落格" description="搜尋部落格文章。">
   <section class="search-page">
-    <Heading as="h1">Search</Heading>
+    <Heading as="h1">搜尋</Heading>
     <div class="search-input-wrap">
       <input
         type="text"
         id="search-input"
-        placeholder="Search posts..."
+        placeholder="搜尋文章..."
         autocomplete="off"
         autofocus
       />
     </div>
     <ul id="search-results" class="search-results"></ul>
-    <p id="search-empty" class="search-empty" hidden>No posts found.</p>
+    <p id="search-empty" class="search-empty" hidden>找不到文章。</p>
   </section>
 </Layout>
 
@@ -46,7 +46,7 @@ import Heading from "../components/Heading.astro";
       loaded = true;
     } catch (err) {
       console.error(err);
-      emptyMsg.textContent = "Search is unavailable. Please try again later.";
+      emptyMsg.textContent = "搜尋功能暫時無法使用，請稍後再試。";
       emptyMsg.hidden = false;
     }
   }
