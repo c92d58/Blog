@@ -1,25 +1,30 @@
-import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
-
-import sitemap from "@astrojs/sitemap";
+import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
-// https://astro.build/config
 export default defineConfig({
-   vite: {
-    plugins: [tailwindcss()],
-  },
+  site: "https://blog.wahsun.org",
+  integrations: [mdx(), sitemap()],
   markdown: {
-    drafts: true,
     shikiConfig: {
-      theme: "css-variables"
-    }
+      themes: {
+        light: "github-light",
+        dark: "github-dark",
+      },
+    },
+    rehypePlugins: [
+      rehypeSlug,
+      [rehypeAutolinkHeadings, {
+        behavior: "append",
+        properties: {
+          className: ["heading-anchor"],
+          ariaHidden: "true",
+          tabIndex: -1,
+        },
+        content: { type: "text", value: "#" },
+      }],
+    ],
   },
-  shikiConfig: {
-    wrap: true,
-    skipInline: false,
-    drafts: true
-  },
-  site: 'https://blog.wahsun.org',
-  integrations: [sitemap(), mdx()]
 });

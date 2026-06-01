@@ -1,0 +1,43 @@
+---
+import Layout from "../components/Layout.astro";
+import Heading from "../components/Heading.astro";
+import Prose from "../components/Prose.astro";
+---
+
+<Layout title="About — BLOG" description="About BLOG.">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About BLOG",
+    "description": "About BLOG.",
+    "url": new URL("/about", Astro.site).href,
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "BLOG",
+      "url": Astro.site?.href,
+    },
+  })} />
+  <section class="about">
+    <Heading as="h1">About</Heading>
+    <Prose>
+      <p>
+        BLOG is a quiet place for writing about technology, systems, and the
+        world around us — built by WAHSUN.
+      </p>
+      <p>
+        Here you'll find posts about self-hosting, AI agents, DevOps practices,
+        and occasional reflections on life and philosophy. Content is driven by
+        curiosity and a preference for building over buying.
+      </p>
+      <p>
+        No newsletters. No pop-ups. No tracking. Just writing.
+      </p>
+    </Prose>
+  </section>
+</Layout>
+
+<style>
+  .about {
+    max-width: var(--width-content);
+  }
+</style>

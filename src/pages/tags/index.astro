@@ -1,33 +1,65 @@
 ---
-import { getCollection } from "astro:content";
-import BaseLayout from "@/layouts/BaseLayout.astro";
-const allPosts = await getCollection("posts");
-const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
-const sortedTags = tags.sort((a, b) => a.localeCompare(b)); // Sort tags alphabetically
+import Layout from "../../components/Layout.astro";
+import Heading from "../../components/Heading.astro";
+import { getPublishedPosts } from "../../lib/posts";
 
-const pageTitle = "Tag Index";
+const posts = await getPublishedPosts();
+const tagCounts = new Map<string, number>();
+for (const post of posts) {
+  for (const tag of post.data.tags) {
+    tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+  }
+}
+const tags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1]);
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <section>
-    <div class="py-24">
-      <h1
-        class="text-4xl text-balance font-medium font-display text-base-900 max-w-xl"
-      >
-        All tags
-      </h1>
-      <div class="flex flex-wrap gap-3 mt-8">
-        {
-          sortedTags.map((tag) => (
-            <a
-              class=" hover:text-blue-500 text-xs font-medium text-base-600"
-              href={`/tags/${tag}`}
-            >
-              {tag}
-            </a>
-          ))
-        }
-      </div>
-    </div>
+<Layout title="Tags — BLOG" description="Browse posts by tag.">
+  <section class="tags-page">
+    <Heading as="h1">Tags</Heading>
+    <ul class="tag-list">
+      {tags.map(([tag, count]) => (
+        <li>
+          <a href={`/tags/${tag}`} class="tag-link">
+            {tag} <span class="tag-count">({count})</span>
+          </a>
+        </li>
+      ))}
+    </ul>
   </section>
-</BaseLayout>
+</Layout>
+
+<style>
+  .tags-page {
+    max-width: var(--width-content);
+  }
+
+  .tag-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+  }
+
+  .tag-link {
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border: 1px solid var(--color-border);
+    padding: 0.25rem 0.75rem;
+    border-radius: 3px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .tag-link:hover {
+    color: var(--color-text);
+    border-color: var(--color-text-tertiary);
+  }
+
+  .tag-count {
+    color: var(--color-text-tertiary);
+    font-size: 0.75rem;
+  }
+</style>

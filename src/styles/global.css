@@ -1,77 +1,100 @@
-@import "tailwindcss";
-@plugin "@tailwindcss/forms";
-@plugin "@tailwindcss/typography";
-@theme {
-  --font-sans: Inter, sans-serif;
-  --font-display: InterDisplay, monospace;
-  --font-mono: JetBrains Mono, monospace;
-  --color-base-50: oklch(96.74% 0.001 286.38);
-  --color-base-100: oklch(93.73% 0.001 286.37);
-  --color-base-200: oklch(87.31% 0.004 271.36);
-  --color-base-300: oklch(80.82% 0.006 274.95);
-  --color-base-400: oklch(74.22% 0.009 278.59);
-  --color-base-500: oklch(67.48% 0.012 280.37);
-  --color-base-600: oklch(56.83% 0.015 281.34);
-  --color-base-700: oklch(46.56% 0.011 279.46);
-  --color-base-800: oklch(35.42% 0.009 285.95);
-  --color-base-900: oklch(23.48% 0.004 264.49);
-  --color-base-950: oklch(16.89% 0.002 286.18);
-}
-/* CSS */
+/* ============================================
+   UINUX Blog — Global Styles
+   A calm, typography-first design system.
+   ============================================ */
+
 :root {
-  font-family: Inter, sans-serif;
-}
-@supports (font-variation-settings: normal) {
-  :root {
-    font-family: InterVariable, sans-serif;
-  }
+  --font-body: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-heading: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
+
+  --color-text: #1a1a1a;
+  --color-text-secondary: #555;
+  --color-text-tertiary: #888;
+  --color-bg: #fafaf9;
+  --color-surface: #fff;
+  --color-border: #e5e5e3;
+  --color-link: #1a1a1a;
+  --color-link-hover: #555;
+  --color-code-bg: #f4f4f2;
+
+  --width-content: 640px;
+  --width-page: 720px;
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 5rem;
 }
 
-/* Light theme (default) */
-:root {
-  --astro-code-color-text: #000000;
-  --astro-code-background: #f5f5f5;
-  --astro-code-token-constant: #00000080;
-  --astro-code-token-string: #00000050;
-  --astro-code-token-comment: #00000060;
-  --astro-code-token-keyword: black;
-  --astro-code-token-parameter: #ffffff;
-  --astro-code-token-function: black;
-  --astro-code-token-string-expression: #2522fc;
-  --astro-code-token-punctuation: #ffffff;
-  --astro-code-token-link: #ffffff;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Dark theme (auto) */
+html {
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+::selection {
+  background-color: #d4d4d0;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-base-50: oklch(15% 0.01 280);
-    --color-base-100: oklch(20% 0.01 280);
-    --color-base-200: oklch(25% 0.01 280);
-    --color-base-300: oklch(35% 0.01 280);
-    --color-base-400: oklch(45% 0.01 280);
-    --color-base-500: oklch(55% 0.01 280);
-    --color-base-600: oklch(65% 0.01 280);
-    --color-base-700: oklch(75% 0.01 280);
-    --color-base-800: oklch(85% 0.01 280);
-    --color-base-900: oklch(92% 0.005 280);
-    --color-base-950: oklch(96% 0.003 280);
-
-    --astro-code-color-text: #e5e7eb;
-    --astro-code-background: #1e1e2e;
-    --astro-code-token-constant: #9cdcfe;
-    --astro-code-token-string: #ce9178;
-    --astro-code-token-comment: #6a9955;
-    --astro-code-token-keyword: #569cd6;
-    --astro-code-token-parameter: #e5e7eb;
-    --astro-code-token-function: #dcdcaa;
-    --astro-code-token-string-expression: #ce9178;
-    --astro-code-token-punctuation: #e5e7eb;
-    --astro-code-token-link: #569cd6;
+    --color-text: #e8e8e6;
+    --color-text-secondary: #a0a09e;
+    --color-text-tertiary: #6e6e6c;
+    --color-bg: #141413;
+    --color-surface: #1e1e1c;
+    --color-border: #2e2e2c;
+    --color-link: #e8e8e6;
+    --color-link-hover: #a0a09e;
+    --color-code-bg: #242422;
   }
-}
 
-/* Smooth color scheme transitions */
-*, *::before, *::after {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  ::selection {
+    background-color: #3a3a38;
+  }
+
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
 }

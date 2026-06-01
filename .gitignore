@@ -1,36 +1,30 @@
-# Build output
-dist/
-
 # Dependencies
 node_modules/
 
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+# Build output
+dist/
 
-# Environment variables
+# Astro
+.astro/
+
+# Environment
 .env
-.env.production
+.env.*
+!.env.example
 
-# macOS-specific files
+# Lock files — project uses pnpm, ignore npm lockfile
+package-lock.json
+
+# Screenshots
+*.png
+!public/*.png
+
+# OS
 .DS_Store
+Thumbs.db
 
-# VS Code settings
+# Editor
 .vscode/
-
-# Git-specific files
-.git/
-.gitconfig
-.gitignore
-
-# Other editor/IDE settings
 .idea/
-*.iml
-
-# Temporary/system files
 *.swp
-*.tmp
-Thumbs.db.astro
-.astro
+*.swo

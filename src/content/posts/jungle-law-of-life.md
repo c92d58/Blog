@@ -1,12 +1,9 @@
 ---
 title: '文明的幻象與實力的底牌：人生的底層邏輯仍然是叢林法則'
-pubDate: 2026-05-31
 description: '從國際政治的殘酷現實到個人職場的生存智慧，探討為何「實力」才是這個世界真正的通行證——以及如何在清醒認識叢林法則的同時，過好文明的生活。'
-author: 'WAHSUN'
-image:
-  url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2670&auto=format&fit=crop'
-  alt: 'A vast mountainous landscape at twilight, symbolizing the raw and untamed nature of the world beneath the thin veneer of civilization'
+date: 2026-05-31
 tags: ['叢林法則', '人生哲學', '實力思維', '國際政治', '認知升級']
+draft: false
 ---
 
 ## 一、溫室裡的幻覺

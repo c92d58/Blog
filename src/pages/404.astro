@@ -1,21 +1,37 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import Layout from "../components/Layout.astro";
+import Heading from "../components/Heading.astro";
 ---
-<BaseLayout>
-  <section>
-    <div class="py-24 text-center">
-      <h1 class="text-6xl font-medium font-display text-base-900">
-        404
-      </h1>
-      <p class="mt-4 text-base-500 text-balance max-w-md mx-auto">
-        找不到這個頁面，可能已被移除或連結有誤。
-      </p>
-      <a
-        href="/"
-        class="mt-8 inline-flex py-1.5 px-2.5 border focus:ring-2 h-7.5 text-sm rounded-full border-transparent bg-base-900 hover:bg-base-900/10 text-white duration-200 focus:ring-offset-2 focus:ring-white hover:text-base-900 ring-1 ring-transparent"
-      >
-        回到首頁
-      </a>
-    </div>
+
+<Layout title="404 — Page Not Found — BLOG" description="The page you're looking for doesn't exist.">
+  <section class="not-found">
+    <Heading as="h1">404</Heading>
+    <p class="message">This page doesn't exist.</p>
+    <a href="/" class="home-link">← Back to home</a>
   </section>
-</BaseLayout>
+</Layout>
+
+<style>
+  .not-found {
+    max-width: var(--width-content);
+  }
+
+  .message {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-xl);
+  }
+
+  .home-link {
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    color: var(--color-text-tertiary);
+    text-decoration: none;
+  }
+
+  .home-link:hover {
+    color: var(--color-text);
+  }
+</style>
