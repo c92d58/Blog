@@ -16,8 +16,6 @@ draft: false
 
 這就是同化。
 
-![一個人站在岔路口——選擇的姿態本身就是一種立場](https://images.pexels.com/photos/1181715/pexels-photo-1181715.jpeg?auto=compress&cs=tinysrgb&w=1200)
-
 ---
 
 ## 同化不是陰謀，是重力
@@ -43,8 +41,6 @@ draft: false
 小時候，只要你跟別人不一樣，就會被嘲笑。長大後，這些嘲笑換了個名字——「不太合群」、「性格太強」、「很難相處」。
 
 很少有人能承受這種標籤。
-
-![一個人逆流而行](https://images.pexels.com/photos/1181728/pexels-photo-1181728.jpeg?auto=compress&cs=tinysrgb&w=1200)
 
 大多數人選擇在群體中稀釋自己。不是因為他們軟弱，而是因為歸屬感是寫在人類基因裡的剛需。被排擠在古代意味著死亡，這條神經到今天還在運作。
 
@@ -77,8 +73,6 @@ draft: false
 **第三個，你會不會說不。**
 
 說不的能力，是獨立意志最後的防線。對無意義的飯局說不，對消耗你精力的請求說不，對那些「別人都這樣」的說法說不。每一次說不，都是在告訴世界：我有自己的邊界。
-
-![海浪拍打岩石——不被侵蝕的關鍵](https://images.pexels.com/photos/1181346/pexels-photo-1181346.jpeg?auto=compress&cs=tinysrgb&w=1200)
 
 ---
 
@@ -113,8 +107,6 @@ draft: false
 這些都是很小的事。但它們會慢慢幫你找回一個東西——你對自己的感知。
 
 每一次你按照自己的意願做一個微小的決定，你就是在對同化說不。
-
-![獨自一人坐在山頂](https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&w=1200)
 
 ---
 

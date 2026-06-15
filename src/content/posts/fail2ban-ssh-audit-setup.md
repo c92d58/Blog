@@ -10,8 +10,6 @@ draft: false
 
 這不是「會不會」的問題，而是「何時」的問題。
 
-![伺服器安全防護——數位時代的城牆](https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1200)
-
 *在公網上，沒人在乎你是個人部落格還是企業後端——掃描機器人對所有人一視同仁*
 
 ---
@@ -28,8 +26,6 @@ draft: false
 | DoS 類連線泛洪 | ❌ 部分 | ✅ 自動封禁 |
 
 即使你只使用金鑰登入，攻擊者仍會嘗試**無效使用者**和**無效金鑰**，這些連線本身就會增加系統負擔和日誌大小。本文提供的方案會將這些行為**即時封禁**並**完整記錄**到審計日誌中。
-
-![數據中心中的伺服器——硬體防護的視覺象徵](https://images.pexels.com/photos/256514/pexels-photo-256514.jpeg?auto=compress&cs=tinysrgb&w=1200)
 
 *真正的安全不是單點防禦，而是多層聯動*
 
@@ -147,8 +143,6 @@ fail2ban-client status sshd
 fail2ban-client status sshd-audit
 ```
 
-![伺服器機房中的網路設備](https://images.pexels.com/photos/1089438/pexels-photo-1089438.jpeg?auto=compress&cs=tinysrgb&w=1200)
-
 *安全配置不只是防護，更是為未來的自己留下的操作紀錄*
 
 ---
@@ -214,8 +208,6 @@ iptables -L -n | grep f2b
 # fail2ban 客戶端
 fail2ban-client status sshd | grep "Banned IP list"
 ```
-
-![命令列中的安全監控](https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1200)
 
 *真正的安全感來自於知道自己的系統正在被保護*
 
