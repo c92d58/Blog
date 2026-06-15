@@ -19,13 +19,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: rm -f pnpm-lock.yaml pnpm-workspace.yaml pnpm.yaml 2>/dev/null || true
+      - run: npm install --ignore-scripts
       - run: node node_modules/astro/bin/astro.mjs build
       - uses: actions/upload-pages-artifact@v3
         with:
