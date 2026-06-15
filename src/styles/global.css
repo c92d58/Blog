@@ -1,11 +1,14 @@
 /* ============================================
    UINUX Blog — Global Styles
-   A calm, typography-first design system.
+   Tailwind v4 + CSS custom property design system
    ============================================ */
+@import "tailwindcss";
 
-:root {
+/* ─── Map existing design tokens to Tailwind theme ─── */
+@theme {
   --font-body: "Newsreader", Georgia, "Times New Roman", serif;
-  --font-heading: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-heading: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Helvetica, Arial, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
 
   --color-text: #1a1a1a;
@@ -21,14 +24,45 @@
   --width-content: 640px;
   --width-page: 720px;
 
-  --space-xs: 0.25rem;
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 2rem;
-  --space-xl: 3rem;
-  --space-2xl: 5rem;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 5rem;
 }
 
+/* ─── Dark mode via prefers-color-scheme ─── */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@variant dark {
+  :root {
+    --color-text: #e8e8e6;
+    --color-text-secondary: #a0a09e;
+    --color-text-tertiary: #6e6e6c;
+    --color-bg: #141413;
+    --color-surface: #1e1e1c;
+    --color-border: #2e2e2c;
+    --color-link: #e8e8e6;
+    --color-link-hover: #a0a09e;
+    --color-code-bg: #242422;
+  }
+
+  ::selection {
+    background-color: #3a3a38;
+  }
+
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
+}
+
+/* ─── Base reset ─── */
 *,
 *::before,
 *::after {
@@ -70,31 +104,4 @@ img {
 
 ::selection {
   background-color: #d4d4d0;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-text: #e8e8e6;
-    --color-text-secondary: #a0a09e;
-    --color-text-tertiary: #6e6e6c;
-    --color-bg: #141413;
-    --color-surface: #1e1e1c;
-    --color-border: #2e2e2c;
-    --color-link: #e8e8e6;
-    --color-link-hover: #a0a09e;
-    --color-code-bg: #242422;
-  }
-
-  ::selection {
-    background-color: #3a3a38;
-  }
-
-  .astro-code,
-  .astro-code span {
-    color: var(--shiki-dark) !important;
-    background-color: var(--shiki-dark-bg) !important;
-    font-style: var(--shiki-dark-font-style) !important;
-    font-weight: var(--shiki-dark-font-weight) !important;
-    text-decoration: var(--shiki-dark-text-decoration) !important;
-  }
 }

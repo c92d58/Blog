@@ -4,9 +4,12 @@ import sitemap from "@astrojs/sitemap";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
+import tailwindcss from "@tailwindcss/vite";
+
 export default defineConfig({
   site: "https://blog.wahsun.org",
   integrations: [mdx(), sitemap()],
+
   markdown: {
     shikiConfig: {
       themes: {
@@ -26,5 +29,9 @@ export default defineConfig({
         content: { type: "text", value: "#" },
       }],
     ],
+  },
+
+  vite: {
+    plugins: [tailwindcss()],
   },
 });
