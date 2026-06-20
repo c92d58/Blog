@@ -11,7 +11,7 @@ const posts = allPosts.slice(0, PAGE_SIZE);
 const totalPages = Math.ceil(allPosts.length / PAGE_SIZE);
 ---
 
-<Layout title="部落格">
+<Layout title="首頁">
   <script slot="head" type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://blog.wahsun.org",
     "@type": "WebSite",
