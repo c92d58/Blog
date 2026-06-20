@@ -8,12 +8,12 @@ const gravatarHash = crypto.createHash("md5").update("x@wahsun.org".trim().toLow
 const gravatarUrl = `https://www.gravatar.com/avatar/${gravatarHash}?s=144&d=mp`;
 ---
 
-<Layout title="關於 — 部落格" description="書寫情感、認知心理學，與社會觀察。">
+<Layout title="關於 — 部落格" description="探索人性幽微處——情感的真偽、認知的盲區、社會的潛規則">
   <script slot="head" type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://blog.wahsun.org",
     "@type": "AboutPage",
     "name": "關於這個部落格",
-    "description": "書寫情感、認知心理學，與社會觀察。",
+    "description": "探索人性幽微處——情感的真偽、認知的盲區、社會的潛規則",
     "url": new URL("/about", Astro.site).href,
     "isPartOf": {
       "@type": "WebSite",
@@ -24,52 +24,75 @@ const gravatarUrl = `https://www.gravatar.com/avatar/${gravatarHash}?s=144&d=mp`
   <section class="about">
     <div class="about-hero">
       <div class="about-avatar">
-        <img class="avatar-img" src={gravatarUrl} alt="WAHSUN" width="72" height="72" />
+        <img class="avatar-img" src={gravatarUrl} alt="WAHSUN" width="80" height="80" />
         <span class="avatar-ring"></span>
+        <span class="avatar-ring-2"></span>
       </div>
       <Heading as="h1"> </Heading>
-      <p class="about-subtitle">書寫情感、認知心理學，與社會觀察</p>
-    </div>
-
-    <div class="about-card">
-      <div class="about-card-accent"></div>
-      <Prose>
-        <p>
-          這裡不談技術，不寫教學，不比較工具。
-        </p>
-        <p>
-          只談那些真正困擾人的——情感的真偽、認知的盲區、社會運作的潛規則。從米爾格倫的電擊實驗到日常生活中的自我欺騙，從群體壓力下的服從到面對真相時的戰慄，每一篇文章都是對人性某個側面的凝視。
-        </p>
-        <p>
-          不是學術論文，只是一個持續思考的人留下的筆記。
-        </p>
-      </Prose>
-    </div>
-
-    <div class="about-card">
-      <div class="about-card-accent"></div>
-      <Prose>
-        <p>
-          沒有電子報。沒有彈窗。沒有追蹤。沒有演算法。只有文字——以及你想從中讀到的任何東西。
-        </p>
-        <p>
-          信箱：<a href="mailto:x@wahsun.org" class="about-email">x@wahsun.org</a>
-        </p>
-      </Prose>
-    </div>
-
-    <div class="about-stats">
-      <div class="stat-item animate-fade-up delay-1">
-        <span class="stat-number">情感</span>
-        <span class="stat-label">Emotion</span>
+      <p class="about-subtitle">探索人性幽微處</p>
+      <div class="about-hero-divider">
+        <span class="divider-dot"></span>
+        <span class="divider-line"></span>
+        <span class="divider-dot"></span>
       </div>
-      <div class="stat-item animate-fade-up delay-2">
-        <span class="stat-number">認知</span>
-        <span class="stat-label">Cognition</span>
+    </div>
+
+    <div class="about-card about-card-intro">
+      <div class="card-glow"></div>
+      <div class="card-bg-pattern"></div>
+      <div class="card-content">
+        <span class="decorative-quote">&ldquo;</span>
+        <Prose>
+          <p class="card-lead">
+            這裡不談技術，不寫教學，不比較工具。
+          </p>
+          <p>
+            只談那些真正困擾人的——情感的真偽、認知的盲區、社會運作的潛規則。從米爾格倫的電擊實驗到日常生活中的自我欺騙，從群體壓力下的服從到面對真相時的戰慄，每一篇文章都是對人性某個側面的凝視。
+          </p>
+          <p>
+            不是學術論文，只是一個持續思考的人留下的筆記。
+          </p>
+        </Prose>
       </div>
-      <div class="stat-item animate-fade-up delay-3">
-        <span class="stat-number">社會</span>
-        <span class="stat-label">Society</span>
+    </div>
+
+    <div class="about-topics">
+      <div class="topic-item topic-emotion">
+        <span class="topic-icon">&#x2767;</span>
+        <span class="topic-label">情感</span>
+        <span class="topic-en">Emotion</span>
+        <div class="topic-bar"></div>
+        <span class="topic-desc">關係、依附、失落與愛</span>
+      </div>
+      <div class="topic-item topic-cognition">
+        <span class="topic-icon">&#x25B4;</span>
+        <span class="topic-label">認知</span>
+        <span class="topic-en">Cognition</span>
+        <div class="topic-bar"></div>
+        <span class="topic-desc">偏誤、框架、覺醒與重啟</span>
+      </div>
+      <div class="topic-item topic-society">
+        <span class="topic-icon">&#x2234;</span>
+        <span class="topic-label">社會</span>
+        <span class="topic-en">Society</span>
+        <div class="topic-bar"></div>
+        <span class="topic-desc">權力、服從、群體與反抗</span>
+      </div>
+    </div>
+
+    <div class="about-card about-card-simple">
+      <div class="card-content">
+        <Prose>
+          <p>
+            沒有電子報。沒有彈窗。沒有追蹤。沒有演算法。
+          </p>
+          <p class="about-final-line">
+            只有文字——以及你想從中讀到的任何東西。
+          </p>
+          <p class="about-contact">
+            <a href="mailto:x@wahsun.org" class="about-email">x@wahsun.org</a>
+          </p>
+        </Prose>
       </div>
     </div>
   </section>
@@ -89,8 +112,8 @@ const gravatarUrl = `https://www.gravatar.com/avatar/${gravatarHash}?s=144&d=mp`
 
   .about-avatar {
     position: relative;
-    width: 72px;
-    height: 72px;
+    width: 80px;
+    height: 80px;
     margin: 0 auto var(--space-lg);
     display: flex;
     align-items: center;
@@ -98,33 +121,84 @@ const gravatarUrl = `https://www.gravatar.com/avatar/${gravatarHash}?s=144&d=mp`
   }
 
   .avatar-img {
-    width: 72px;
-    height: 72px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    z-index: 1;
+    z-index: 2;
     display: block;
     object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .about-avatar:hover .avatar-img {
+    transform: scale(1.04);
   }
 
   .avatar-ring {
     position: absolute;
-    inset: 0;
+    inset: -4px;
     border: 1.5px solid var(--color-border);
     border-radius: 50%;
-    transition: transform 0.4s ease, border-color 0.4s ease;
+    z-index: 1;
+    transition: transform 0.5s ease, border-color 0.5s ease;
+  }
+
+  .avatar-ring-2 {
+    position: absolute;
+    inset: -8px;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    z-index: 0;
+    opacity: 0.3;
+    transition: transform 0.6s ease, opacity 0.4s ease;
   }
 
   .about-avatar:hover .avatar-ring {
-    transform: scale(1.08);
+    transform: scale(1.06);
     border-color: var(--color-text-tertiary);
   }
 
+  .about-avatar:hover .avatar-ring-2 {
+    transform: scale(1.1);
+    opacity: 0.5;
+  }
+
   .about-subtitle {
-    font-family: var(--font-body);
-    font-size: 1rem;
-    font-style: italic;
-    color: var(--color-text-secondary);
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--color-text);
     margin-top: var(--space-sm);
+    background: linear-gradient(135deg, var(--color-text) 40%, var(--color-text-secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeIn 0.6s ease 0.15s both;
+  }
+
+  .about-hero-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: var(--space-md);
+    opacity: 0.5;
+  }
+
+  .divider-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-text-tertiary);
+  }
+
+  .divider-line {
+    width: 40px;
+    height: 1px;
+    background: var(--color-text-tertiary);
+    animation: shimmer 3s ease infinite;
+    background-size: 200% 100%;
   }
 
   /* ─── Cards ─────────────────────────────── */
@@ -132,100 +206,225 @@ const gravatarUrl = `https://www.gravatar.com/avatar/${gravatarHash}?s=144&d=mp`
     position: relative;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 12px;
+    border-radius: 14px;
     padding: var(--space-lg);
     margin-bottom: var(--space-lg);
     overflow: hidden;
     animation: fadeUp 0.5s ease both;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-
-  .about-card:nth-of-type(1) { animation-delay: 0.1s; }
-  .about-card:nth-of-type(2) { animation-delay: 0.2s; }
 
   .about-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
   }
 
-  .about-card-accent {
+  .about-card-intro {
+    animation-delay: 0.1s;
+  }
+
+  .about-card-simple {
+    animation-delay: 0.25s;
+    text-align: center;
+  }
+
+  .card-glow {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-    opacity: 0.4;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 20%, var(--color-accent-subtle) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+
+  .about-card:hover .card-glow {
+    opacity: 1;
+  }
+
+  .card-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(var(--color-border) 0.5px, transparent 0.5px);
+    background-size: 20px 20px;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+
+  .card-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .decorative-quote {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    line-height: 0.8;
+    color: var(--color-border);
+    display: block;
+    margin-bottom: var(--space-sm);
+    user-select: none;
+    transition: color 0.3s ease;
+  }
+
+  .about-card-intro:hover .decorative-quote {
+    color: var(--color-text-tertiary);
+  }
+
+  .card-lead {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: var(--space-md) !important;
   }
 
   .about-card .prose p {
     font-size: 1rem;
-    line-height: 1.8;
+    line-height: 1.9;
   }
 
-  .about-email {
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    padding: 2px 8px;
-    background: var(--color-accent-subtle);
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background 0.2s ease, color 0.2s ease;
+  .about-card .prose .card-lead + p {
+    margin-top: var(--space-md);
   }
 
-  .about-email:hover {
-    background: var(--color-border);
+  .about-final-line {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 500;
     color: var(--color-text);
   }
 
-  /* ─── Stats ─────────────────────────────── */
-  .about-stats {
+  /* ─── Topics Grid ─────────────────────────── */
+  .about-topics {
     display: flex;
-    justify-content: center;
-    gap: var(--space-lg);
-    margin-top: var(--space-xl);
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
     flex-wrap: wrap;
+    animation: fadeUp 0.5s ease 0.18s both;
   }
 
-  .stat-item {
+  .topic-item {
+    flex: 1;
+    min-width: 120px;
     text-align: center;
-    padding: var(--space-md) var(--space-lg);
+    padding: var(--space-lg) var(--space-md);
     border: 1px solid var(--color-border);
-    border-radius: 10px;
-    min-width: 100px;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
   }
 
-  .stat-item:hover {
-    transform: translateY(-3px);
-    border-color: var(--color-text-tertiary);
+  .topic-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
   }
 
-  .stat-number {
+  .topic-emotion { animation-delay: 0.15s; }
+  .topic-emotion:hover { border-color: #c08497; }
+  .topic-cognition { animation-delay: 0.2s; }
+  .topic-cognition:hover { border-color: #7eb8da; }
+  .topic-society { animation-delay: 0.25s; }
+  .topic-society:hover { border-color: #7fc6a4; }
+
+  .topic-icon {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+    color: var(--color-text-tertiary);
+    transition: transform 0.3s ease;
+  }
+
+  .topic-item:hover .topic-icon {
+    transform: scale(1.2);
+  }
+
+  .topic-label {
     display: block;
     font-family: var(--font-heading);
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--color-text);
     margin-bottom: 2px;
   }
 
-  .stat-label {
-    font-family: var(--font-body);
-    font-size: 0.75rem;
+  .topic-en {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
     color: var(--color-text-tertiary);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-sm);
   }
 
-  /* ─── Dark mode adjustments ─────────────── */
+  .topic-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    margin: 0 auto var(--space-sm);
+    border-radius: 1px;
+    background: var(--color-border);
+    transition: width 0.3s ease, background 0.3s ease;
+  }
+
+  .topic-emotion:hover .topic-bar { width: 40px; background: #c08497; }
+  .topic-cognition:hover .topic-bar { width: 40px; background: #7eb8da; }
+  .topic-society:hover .topic-bar { width: 40px; background: #7fc6a4; }
+
+  .topic-desc {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-text-tertiary);
+    line-height: 1.4;
+  }
+
+  /* ─── Contact ─────────────────────────────── */
+  .about-contact {
+    margin-top: var(--space-md) !important;
+  }
+
+  .about-email {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    padding: 6px 14px;
+    background: var(--color-accent-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    display: inline-block;
+  }
+
+  .about-email:hover {
+    background: var(--color-border);
+    color: var(--color-text);
+    transform: translateY(-1px);
+  }
+
+  /* ─── Dark mode ──────────────────────────── */
   @media (prefers-color-scheme: dark) {
     .about-card:hover {
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .topic-item:hover {
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     }
 
-    .about-email:hover {
-      background: var(--color-border);
+    .card-bg-pattern {
+      opacity: 0.08;
+    }
+
+    .about-subtitle {
+      background: linear-gradient(135deg, var(--color-text) 40%, var(--color-text-secondary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   }
 </style>

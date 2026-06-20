@@ -22,7 +22,7 @@ const totalPages = Math.ceil(allPosts.length / PAGE_SIZE);
   <section class="home">
     <header class="home-header">
       <Heading as="h1"> </Heading>
-      <p class="home-tagline">書寫情感、認知心理學，與社會觀察。</p>
+      <p class="home-tagline">探索人性幽微處——情感的真偽、認知的盲區、社會的潛規則</p>
     </header>
     <ul class="post-list">
       {
@@ -67,6 +67,9 @@ const totalPages = Math.ceil(allPosts.length / PAGE_SIZE);
     font-size: 1rem;
     color: var(--color-text-secondary);
     margin-top: var(--space-sm);
+    line-height: 1.6;
+    max-width: 520px;
+    animation: fadeIn 0.8s ease 0.2s both;
   }
 
   .post-list {
