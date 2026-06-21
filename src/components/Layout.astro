@@ -13,7 +13,7 @@ interface Props {
 
 const {
   title,
-  description = "書寫情感、認知心理學，與社會觀察。",
+  description = "在雨聲中，讀懂人性的溫度。",
   ogType = "website",
   ogImage = "/og/default.png",
 } = Astro.props;
@@ -44,19 +44,18 @@ const ogImageAbsolute = new URL(ogImage, Astro.site).href;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL.href} />
-    <meta property="og:site_name" content="部落格" />
+    <meta property="og:site_name" content="聽雨" />
     <meta property="og:image" content={ogImageAbsolute} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImageAbsolute} />
 
     <!-- JSON-LD -->
     <slot name="head" />
 
-    <link rel="alternate" type="application/rss+xml" title="部落格" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="聽雨" href="/rss.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

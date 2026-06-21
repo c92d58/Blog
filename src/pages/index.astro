@@ -11,18 +11,18 @@ const posts = allPosts.slice(0, PAGE_SIZE);
 const totalPages = Math.ceil(allPosts.length / PAGE_SIZE);
 ---
 
-<Layout title="部落格">
+<Layout title="聽雨">
   <script slot="head" type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://blog.wahsun.org",
     "@type": "WebSite",
-    "name": "部落格",
-    "description": "書寫情感、認知心理學，與社會觀察。",
+    "name": "聽雨",
+    "description": "在雨聲中，讀懂人性的溫度。",
     "url": Astro.site?.href,
   })} />
   <section class="home">
     <header class="home-header">
       <Heading as="h1"> </Heading>
-      <p class="home-tagline">探索人性幽微處——情感的真偽、認知的盲區、社會的潛規則</p>
+      <p class="home-tagline">雨落無聲，字字入心——聽一場雨，讀一段人間。</p>
     </header>
     <ul class="post-list">
       {

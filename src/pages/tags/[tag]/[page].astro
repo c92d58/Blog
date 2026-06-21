@@ -32,7 +32,7 @@ export async function getStaticPaths() {
 const { tag, posts, totalPages, currentPage } = Astro.props;
 ---
 
-<Layout title={`標籤「${tag}」— 部落格`} description={`所有標籤為「${tag}」的文章 — 第 ${currentPage} 頁。`}>
+<Layout title={`標籤「${tag}」— 聽雨`} description={`所有標籤為「${tag}」的文章 — 第 ${currentPage} 頁。`}>
   <section class="tag-page">
     <Heading as="h1">標籤：{tag}</Heading>
     <ul class="post-list">
