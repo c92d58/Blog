@@ -48,13 +48,6 @@ const { tag, posts, totalPages, currentPage } = Astro.props;
       <p class="tag-meta">第 {currentPage} 頁</p>
     </header>
 
-    <div class="rain-divider" aria-hidden="true">
-      <span class="drop">·</span><span class="drop">·</span>
-      <span class="drop">·</span><span class="drop">·</span>
-      <span class="drop">·</span>
-    </div>
-
-    <!-- Post List -->
     <ul class="post-list">
       {posts.map((post) => {
         const formattedDate = post.data.date.toLocaleDateString("en-US", {

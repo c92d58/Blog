@@ -3,9 +3,6 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
-  <div class="footer-rain" aria-hidden="true">
-    <span>·</span><span>·</span><span>·</span><span>·</span><span>·</span>
-  </div>
   <div class="footer-inner">
     <p class="footer-copy">&copy; {year} 聽雨</p>
   </div>
@@ -27,31 +24,6 @@ const year = new Date().getFullYear();
     right: 25%;
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--color-border), transparent);
-  }
-
-  .footer-rain {
-    display: flex;
-    justify-content: center;
-    gap: 4px;
-    font-size: 0.5rem;
-    color: var(--color-text-tertiary);
-    opacity: 0.3;
-    letter-spacing: 4px;
-    margin-bottom: var(--space-md);
-    animation: footer-drip 3s ease-in-out infinite;
-  }
-
-  .footer-rain span {
-    animation: footer-drop 2s ease-in-out infinite;
-  }
-  .footer-rain span:nth-child(2) { animation-delay: 0.3s; }
-  .footer-rain span:nth-child(3) { animation-delay: 0.6s; }
-  .footer-rain span:nth-child(4) { animation-delay: 0.9s; }
-  .footer-rain span:nth-child(5) { animation-delay: 1.2s; }
-
-  @keyframes footer-drop {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 0.8; }
   }
 
   .footer-inner {

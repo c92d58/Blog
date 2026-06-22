@@ -61,15 +61,6 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString("en-US", {
     )}
   </header>
 
-  <!-- Decorative rain line -->
-  <div class="rain-divider" aria-hidden="true">
-    <span class="drop">·</span>
-    <span class="drop">·</span>
-    <span class="drop">·</span>
-    <span class="drop">·</span>
-    <span class="drop">·</span>
-  </div>
-
   <TableOfContents headings={headings} />
   <Prose>
     <slot />
