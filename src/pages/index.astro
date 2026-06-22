@@ -117,9 +117,9 @@ const restPosts = allPosts.slice(1, PAGE_SIZE);
   /* ─── Hero ──────────────────────────────── */
   .hero {
     position: relative;
-    width: calc(100% + ((var(--width-wide) - var(--width-content)) / 2) * 2);
+    width: 100%;
     max-width: none;
-    margin-left: calc(-1 * ((var(--width-wide) - var(--width-content)) / 2));
+    margin-left: 0;
     height: 240px;
     border-radius: 20px;
     overflow: hidden;
@@ -130,11 +130,10 @@ const restPosts = allPosts.slice(1, PAGE_SIZE);
 
   @media (min-width: 821px) {
     .hero {
-      width: calc(100% + ((100vw - var(--width-wide)) / 2) * 2);
-      margin-left: calc(-1 * ((100vw - var(--width-wide)) / 2));
-      border-radius: 0;
-      border-left: none;
-      border-right: none;
+      width: 100%;
+      margin-left: 0;
+      border-radius: 20px;
+      border: 1px solid var(--color-border);
     }
   }
 
@@ -345,12 +344,12 @@ const restPosts = allPosts.slice(1, PAGE_SIZE);
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--space-sm);
   }
 
   /* ─── Post Item ──────────────────────────── */
   .post-item {
-    padding: var(--space-lg);
+    padding: var(--space-md);
     background: var(--color-surface);
     transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.3s ease;
   }
@@ -395,7 +394,7 @@ const restPosts = allPosts.slice(1, PAGE_SIZE);
 
   .post-title {
     font-family: var(--font-heading);
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 600;
     letter-spacing: -0.01em;
     line-height: 1.3;
