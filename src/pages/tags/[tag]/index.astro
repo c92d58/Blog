@@ -85,7 +85,7 @@ const { tag, posts, totalPages, totalPosts } = Astro.props;
 const group = GROUP_MAP[tag] || null;
 ---
 
-<Layout title={`標籤「${tag}」— WAHSUNNの自留地`} description={`所有標籤為「${tag}」的 ${totalPosts} 篇文章。`}>
+<Layout title={`標籤「${tag}」— WAHSUNの自留地`} description={`所有標籤為「${tag}」的 ${totalPosts} 篇文章。`}>
   <section class="tag-detail">
     <!-- Breadcrumb -->
     <a href="/tags" class="breadcrumb">

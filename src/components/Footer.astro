@@ -4,15 +4,15 @@ const year = new Date().getFullYear();
 
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-brand">WAHSUNN</div>
-    <p class="footer-desc">閱讀、思考與生活的筆記</p>
+    <div class="footer-brand">WAHSUN</div>
+    <p class="footer-copy">&copy; 2026 WAHSUN. All rights reserved.</p>
   </div>
 </footer>
 
 <style>
   .footer {
     margin-top: auto;
-    padding: 4rem 0 3rem;
+    padding: 3rem 0 2rem;
     text-align: center;
     position: relative;
   }
@@ -27,20 +27,19 @@ const year = new Date().getFullYear();
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
   .footer-brand {
     font-family: var(--font-heading);
-    font-size: 1rem;
-    font-weight: 700;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .footer-desc {
     font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--text-tertiary);
-    font-style: italic;
+  }
+  .footer-copy {
+    font-family: var(--font-heading);
+    font-size: 0.625rem;
+    color: var(--text-tertiary);
   }
 </style>
