@@ -14,20 +14,12 @@ const totalPages = Math.ceil(allPosts.length / 9);
 
     <!-- ─── Hero ─────────────────────────────── -->
     <header class="hero">
-      <p class="hero-label animate-fade-up">個人部落格</p>
       <h1 class="hero-title animate-fade-up delay-1">
         <span class="hero-gradient">WAHSUNNの自留地</span>
       </h1>
-      <p class="hero-sub animate-fade-up delay-2">閱讀、思考與生活的筆記</p>
-      <div class="hero-underline"></div>
-      <p class="hero-desc animate-fade-up delay-3">
+      <p class="hero-desc animate-fade-up delay-2">
         一個人在試圖穿透自己頭腦中的迷霧時，留下的筆記。
       </p>
-      <div class="hero-stats animate-fade-up delay-4">
-        <span>{allPosts.length} 篇文章</span>
-        <span class="hero-dot">·</span>
-        <span>持續書寫中</span>
-      </div>
     </header>
 
     <!-- ─── Featured Post ─────────────────────── -->
@@ -91,18 +83,7 @@ const totalPages = Math.ceil(allPosts.length / 9);
   /* ─── Hero ──────────────────────────────── */
   .hero {
     text-align: center;
-    padding: 3rem 0 2.5rem;
-    position: relative;
-  }
-  .hero-label {
-    font-family: var(--font-heading);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--accent);
-    margin-bottom: 1rem;
-  }
+    padding: 4rem 0 3rem;}
   .hero-title {
     font-family: var(--font-heading);
     font-size: 3rem;
@@ -116,19 +97,6 @@ const totalPages = Math.ceil(allPosts.length / 9);
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .hero-sub {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    font-style: italic;
-    margin-bottom: 1.25rem;
-  }
-  .hero-underline {
-    width: 40px;
-    height: 3px;
-    background: var(--gradient);
-    border-radius: 2px;
-    margin: 0 auto 1.25rem;
-  }
   .hero-desc {
     font-size: 0.9375rem;
     color: var(--text-tertiary);
@@ -136,16 +104,6 @@ const totalPages = Math.ceil(allPosts.length / 9);
     margin: 0 auto 1rem;
     line-height: 1.6;
   }
-  .hero-stats {
-    font-family: var(--font-heading);
-    font-size: 0.75rem;
-    color: var(--text-tertiary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-  .hero-dot { color: var(--accent); }
 
   /* ─── Featured Post ──────────────────────── */
   .featured { margin-bottom: 2rem; }
