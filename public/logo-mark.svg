@@ -1,28 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" fill="none">
   <defs>
     <linearGradient id="inkGrad" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#5a5248"/>
       <stop offset="100%" stop-color="#3a3630"/>
     </linearGradient>
-    <linearGradient id="sealGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="currentColor" stop-opacity="0.04"/>
-      <stop offset="100%" stop-color="currentColor" stop-opacity="0.01"/>
-    </linearGradient>
   </defs>
-  <!-- Seal frame -->
-  <rect x="2" y="2" width="116" height="116" rx="24" fill="url(#sealGrad)"/>
-  <rect x="2" y="2" width="116" height="116" rx="24" stroke="currentColor" stroke-width="1.5" opacity="0.15"/>
-  <!-- 雨 character - top horizontal -->
-  <line x1="22" y1="28" x2="98" y2="28" stroke="url(#inkGrad)" stroke-width="5" stroke-linecap="round"/>
-  <!-- Rain body / central stroke -->
-  <path d="M60 36 L45 72 Q60 84 75 72 L60 36Z" fill="url(#inkGrad)" opacity="0.88"/>
-  <!-- Rain dots around -->
-  <circle cx="32" cy="65" r="4.5" fill="url(#inkGrad)" opacity="0.65"/>
-  <circle cx="88" cy="65" r="4.5" fill="url(#inkGrad)" opacity="0.65"/>
-  <circle cx="42" cy="82" r="3.5" fill="url(#inkGrad)" opacity="0.45"/>
-  <circle cx="78" cy="82" r="3.5" fill="url(#inkGrad)" opacity="0.45"/>
-  <!-- Subtle decorative drops falling -->
-  <circle cx="28" cy="92" r="2.5" fill="url(#inkGrad)" opacity="0.25"/>
-  <circle cx="92" cy="92" r="2.5" fill="url(#inkGrad)" opacity="0.25"/>
-  <circle cx="60" cy="100" r="2" fill="url(#inkGrad)" opacity="0.2"/>
+
+  <!-- Sharp outer frame -->
+  <rect x="4" y="4" width="172" height="172" fill="currentColor" opacity="0.03"/>
+  <rect x="4" y="4" width="172" height="172" stroke="currentColor" stroke-width="2" opacity="0.12"/>
+
+  <!-- 雨: Top horizontal -->
+  <line x1="28" y1="44" x2="152" y2="44" stroke="url(#inkGrad)" stroke-width="7" stroke-linecap="square"/>
+
+  <!-- Rain body — angular diamond -->
+  <path d="M90 54 L60 95 L90 130 L120 95 Z" fill="url(#inkGrad)" opacity="0.88"/>
+
+  <!-- Inner highlight stroke -->
+  <line x1="90" y1="70" x2="90" y2="108" stroke="#fff" stroke-width="2" opacity="0.3"/>
+
+  <!-- Square rain drops -->
+  <rect x="46" y="98" width="9" height="9" fill="url(#inkGrad)" opacity="0.55"/>
+  <rect x="125" y="98" width="9" height="9" fill="url(#inkGrad)" opacity="0.55"/>
+  <rect x="64" y="124" width="7" height="7" fill="url(#inkGrad)" opacity="0.4"/>
+  <rect x="109" y="124" width="7" height="7" fill="url(#inkGrad)" opacity="0.4"/>
+
+  <!-- Bottom accent -->
+  <rect x="40" y="142" width="5" height="5" fill="url(#inkGrad)" opacity="0.25"/>
+  <rect x="135" y="142" width="5" height="5" fill="url(#inkGrad)" opacity="0.25"/>
+  <rect x="85" y="152" width="10" height="3" fill="url(#inkGrad)" opacity="0.2"/>
 </svg>

@@ -5,19 +5,23 @@
       <stop offset="100%" stop-color="#3a3630"/>
     </linearGradient>
   </defs>
-  <!-- Seal base -->
-  <rect x="1" y="1" width="30" height="30" rx="8" fill="currentColor" opacity="0.04"/>
-  <rect x="1" y="1" width="30" height="30" rx="8" stroke="currentColor" stroke-width="1.2" opacity="0.2"/>
-  <!-- Simplified 雨 character inspired droplet -->
-  <!-- Top horizontal stroke -->
-  <line x1="8" y1="9" x2="24" y2="9" stroke="url(#fg)" stroke-width="1.8" stroke-linecap="round"/>
-  <!-- Center vertical → stylized raindrop body -->
-  <path d="M16 12 L12 24 Q16 27 20 24 L16 12Z" fill="url(#fg)" opacity="0.85"/>
-  <!-- Left dot (rain drop) -->
-  <circle cx="10.5" cy="20" r="1.2" fill="url(#fg)" opacity="0.7"/>
-  <!-- Right dot (rain drop) -->
-  <circle cx="21.5" cy="20" r="1.2" fill="url(#fg)" opacity="0.7"/>
-  <!-- Bottom dots -->
-  <circle cx="13" cy="25" r="1" fill="url(#fg)" opacity="0.5"/>
-  <circle cx="19" cy="25" r="1" fill="url(#fg)" opacity="0.5"/>
+
+  <!-- Sharp frame -->
+  <rect x="1" y="1" width="30" height="30" fill="currentColor" opacity="0.04"/>
+  <rect x="1" y="1" width="30" height="30" stroke="currentColor" stroke-width="1.5" opacity="0.18"/>
+
+  <!-- 雨: Top horizontal -->
+  <line x1="7" y1="9" x2="25" y2="9" stroke="url(#fg)" stroke-width="1.8" stroke-linecap="square"/>
+
+  <!-- Center raindrop body — sharp diamond -->
+  <path d="M16 12 L12 21 L16 27 L20 21 Z" fill="url(#fg)" opacity="0.85"/>
+
+  <!-- Inner highlight -->
+  <line x1="16" y1="14.5" x2="16" y2="20" stroke="#fff" stroke-width="0.8" opacity="0.3"/>
+
+  <!-- Square droplet dots -->
+  <rect x="9" y="19" width="2" height="2" fill="url(#fg)" opacity="0.55"/>
+  <rect x="21" y="19" width="2" height="2" fill="url(#fg)" opacity="0.55"/>
+  <rect x="11.5" y="24" width="1.8" height="1.8" fill="url(#fg)" opacity="0.4"/>
+  <rect x="18.7" y="24" width="1.8" height="1.8" fill="url(#fg)" opacity="0.4"/>
 </svg>
