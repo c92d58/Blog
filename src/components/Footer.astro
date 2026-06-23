@@ -4,42 +4,26 @@ const year = new Date().getFullYear();
 
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-brand">WAHSUN</div>
-    <p class="footer-copy">&copy; 2026 WAHSUN. All rights reserved.</p>
+    <p class="footer-copy">&copy; 2026</p>
   </div>
 </footer>
 
 <style>
   .footer {
     margin-top: auto;
-    padding: 3rem 0 2rem;
+    padding: 2rem 0 2rem;
     text-align: center;
     position: relative;
-  }
-  .footer::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 50%; transform: translateX(-50%);
-    width: 40px; height: 1px;
-    background: var(--gradient);
   }
   .footer-inner {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-  }
-  .footer-brand {
-    font-family: var(--font-heading);
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-tertiary);
   }
   .footer-copy {
     font-family: var(--font-heading);
     font-size: 0.625rem;
     color: var(--text-tertiary);
+    letter-spacing: 0.02em;
   }
 </style>
