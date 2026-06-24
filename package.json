@@ -25,14 +25,5 @@
   },
   "devDependencies": {
     "patch-package": "^8.0.1"
-  },
-  "overrides": {
-    "esbuild": "0.28.1"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "sharp"
-    ]
   }
 }
