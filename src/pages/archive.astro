@@ -23,38 +23,33 @@ const totalArticles = allPosts.length;
         <span class="hero-gradient">歸檔</span>
       </h1>
       <p class="page-hero-meta animate-fade-up delay-2">
-        共 <strong>{totalArticles}</strong> 篇文章，按年份排列
+        共 <strong>{totalArticles}</strong> 篇文章
       </p>
     </header>
 
-    <div class="archive-list">
-      {sortedYears.map((year, yi) => (
-        <div class="year-group animate-fade-up delay-{Math.min(yi + 1, 6)}">
-          <div class="section-label-wrap">
+    <div class="timeline">
+      {sortedYears.map((year) => (
+        <div class="timeline-year animate-fade-up">
+          <div class="year-label-wrap">
+            <div class="year-dot"></div>
             <span class="section-label">{year}</span>
-            <span class="year-count">{yearGroups.get(year)!.length} 篇</span>
           </div>
 
-          <ul class="post-list">
-            {yearGroups.get(year)!.map((post, i) => {
-              const formattedDate = post.data.date.toLocaleDateString("en-US", {
-                month: "long",
-                day: "numeric",
-              });
-              return (
-                <li class="post-item ink-border">
-                  <a href={`/posts/${post.id}`}>
-                    <span class="post-meta">
-                      <span class="post-number">#{(allPosts.indexOf(post) + 1).toString().padStart(2, '0')}</span>
-                      <time datetime={post.data.date.toISOString()}>{formattedDate}</time>
-                    </span>
-                    <span class="post-title">{post.data.title}</span>
-                    <span class="post-description">{post.data.description}</span>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
+          {yearGroups.get(year)!.map((post) => {
+            const formattedDate = post.data.date.toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+            });
+            return (
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-body">
+                  <time class="timeline-date" datetime={post.data.date.toISOString()}>{formattedDate}</time>
+                  <a href={`/posts/${post.id}`} class="timeline-title">{post.data.title}</a>
+                </div>
+              </div>
+            );
+          })}
         </div>
       ))}
     </div>
@@ -98,75 +93,109 @@ const totalArticles = allPosts.length;
     font-weight: 600;
   }
 
-  /* ─── Year Group ────────────────────────── */
-  .year-group {
-    margin-bottom: 2rem;
+  /* ─── Timeline ──────────────────────────── */
+  .timeline {
+    position: relative;
+    padding-left: 1.75rem;
   }
-  .section-label-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-  }
-  .year-count {
-    font-family: var(--font-heading);
-    font-size: 0.75rem;
-    color: var(--text-tertiary);
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--border), transparent);
+    border-radius: 1px;
   }
 
-  /* ─── Post List ──────────────────────────── */
-  .post-list {
-    list-style: none;
-    padding: 0;
+  /* ─── Year Label ────────────────────────── */
+  .timeline-year {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  .year-label-wrap {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-top: 0.25rem;
+  }
+  .year-label-wrap .section-label {
+    margin-bottom: 0;
+  }
+  .year-dot {
+    position: absolute;
+    left: -1.75rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--gradient);
+    border: 2px solid var(--bg);
+    z-index: 2;
+    flex-shrink: 0;
+  }
+
+  /* ─── Timeline Item ─────────────────────── */
+  .timeline-item {
+    position: relative;
+    padding: 0.375rem 0 0.375rem 0.75rem;
+    margin-bottom: 0.25rem;
+    border-radius: var(--radius-sm);
+    transition: background 0.2s;
+  }
+  .timeline-item:hover {
+    background: var(--surface-hover);
+  }
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -1.75rem;
+    top: 0.6rem;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--border);
+    border: 2px solid var(--bg);
+    z-index: 1;
+    transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+  }
+  .timeline-item:hover .timeline-dot {
+    background: var(--accent);
+    transform: scale(1.35);
+    box-shadow: 0 0 0 3px var(--accent-subtle);
+  }
+
+  .timeline-body {
+    display: flex;
+    align-items: baseline;
     gap: 0.75rem;
   }
 
-  .post-item {
-    padding: 1.25rem;
-    background: var(--surface);
-    box-shadow: var(--shadow-card);
-    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .post-item:hover {
-    border-color: var(--accent);
-    box-shadow: var(--shadow-card-glow);
-    transform: translateY(-3px);
-  }
-  .post-item a {
-    display: flex;
-    flex-direction: column;
-    gap: 0.375rem;
-    text-decoration: none;
-    color: var(--text);
-  }
-  .post-item time {
+  .timeline-date {
     font-family: var(--font-heading);
     font-size: 0.75rem;
+    font-weight: 500;
     color: var(--text-tertiary);
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 3.2rem;
   }
-  .post-title {
+
+  .timeline-title {
     font-family: var(--font-heading);
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: 1.35;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.45;
+    text-decoration: none;
     transition: color 0.2s;
   }
-  .post-item a:hover .post-title {
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .post-description {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  .timeline-title:hover {
+    color: var(--accent);
   }
 
   /* ─── Empty state ───────────────────────── */
@@ -181,7 +210,10 @@ const totalArticles = allPosts.length;
   @media (max-width: 600px) {
     .page-hero-title { font-size: 1.75rem; }
     .page-hero { padding: 1.5rem 0; }
-    .post-item { padding: 1rem; }
-    .year-group { margin-bottom: 1.5rem; }
+    .timeline { padding-left: 1.5rem; }
+    .year-dot, .timeline-dot { left: -1.5rem; }
+    .timeline-body { flex-direction: column; gap: 0.15rem; }
+    .timeline-item { padding: 0.5rem 0 0.5rem 0.5rem; }
+    .timeline-year { margin-bottom: 1.5rem; }
   }
 </style>
