@@ -13,8 +13,8 @@ const currentPath = Astro.url.pathname;
     <a href="/tags" class:list={[{ active: currentPath.startsWith("/tags") }]}>
       <span>標籤</span>
     </a>
-    <a href="/search" class:list={[{ active: currentPath === "/search" }]}>
-      <span>搜尋</span>
+    <a href="/archive" class:list={[{ active: currentPath === "/archive" }]}>
+      <span>歸檔</span>
     </a>
     <a href="/about" class:list={[{ active: currentPath === "/about" }]}>
       <span>關於</span>
