@@ -2,12 +2,12 @@
    聽雨 — Redesigned
    Modern text-content theme (Write color scheme)
    ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
   /* Typography */
   --font-body: "Lora", Georgia, "Times New Roman", serif;
-  --font-heading: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: "DM Sans", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
 
   /* Light mode — Write palette */
