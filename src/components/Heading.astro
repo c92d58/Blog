@@ -23,8 +23,7 @@ const { as: Tag = "h1" } = Astro.props;
     position: relative;
   }
 
-  .heading-h1 {
-    font-size: 2.25rem;
+  .heading-h1 {\n    font-size: 1.75rem;
     font-weight: 700;
     margin-bottom: 1rem;
   }
@@ -41,22 +40,20 @@ const { as: Tag = "h1" } = Astro.props;
     border-radius: 1px;
   }
 
-  .heading-h2 {
-    font-size: 1.5rem;
+  .heading-h2 {\n    font-size: 1.25rem;
     font-weight: 600;
     margin-top: 2.5rem;
     margin-bottom: 0.5rem;
   }
 
-  .heading-h3 {
-    font-size: 1.125rem;
+  .heading-h3 {\n    font-size: 1rem;
     font-weight: 600;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
   }
 
   @media (max-width: 600px) {
-    .heading-h1 { font-size: 1.75rem; }
+    .heading-h1 { font-size: 1.5rem; }
     .heading-h2 { font-size: 1.25rem; }
   }
 </style>
