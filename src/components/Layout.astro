@@ -34,8 +34,8 @@ const ogImageAbsolute = new URL(ogImage, Astro.site).href;
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
     <link rel="apple-touch-icon" href="/logo-mark.svg" />
     <meta name="apple-mobile-web-app-title" content="WAHSUNの自留地" />
-    <meta name="theme-color" content="#f7f3eb" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#121014" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
     {googleVerification && <meta name="google-site-verification" content={googleVerification} />}
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -219,21 +219,21 @@ const ogImageAbsolute = new URL(ogImage, Astro.site).href;
   }
   .blob-1 {
     width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(217,119,6,0.2), transparent 70%);
+    background: radial-gradient(circle, rgba(0,153,255,0.15), transparent 70%);
     top: -15%;
     left: -10%;
     animation: blobFloat1 25s ease-in-out infinite;
   }
   .blob-2 {
     width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(245,158,11,0.18), transparent 70%);
+    background: radial-gradient(circle, rgba(77,184,255,0.12), transparent 70%);
     bottom: -10%;
     right: -10%;
     animation: blobFloat2 30s ease-in-out infinite;
   }
   .blob-3 {
     width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(251,191,36,0.15), transparent 70%);
+    background: radial-gradient(circle, rgba(0,153,255,0.1), transparent 70%);
     top: 50%;
     left: 50%;
     animation: blobFloat3 20s ease-in-out infinite;
@@ -259,9 +259,9 @@ const ogImageAbsolute = new URL(ogImage, Astro.site).href;
 
   @media (prefers-color-scheme: dark) {
     .ambient-blob { opacity: 0.15; }
-    .blob-1 { background: radial-gradient(circle, rgba(217,119,6,0.12), transparent 70%); }
-    .blob-2 { background: radial-gradient(circle, rgba(130,80,220,0.1), transparent 70%); }
-    .blob-3 { background: radial-gradient(circle, rgba(245,158,11,0.08), transparent 70%); }
+    .blob-1 { background: radial-gradient(circle, rgba(77,184,255,0.1), transparent 70%); }
+    .blob-2 { background: radial-gradient(circle, rgba(0,153,255,0.08), transparent 70%); }
+    .blob-3 { background: radial-gradient(circle, rgba(128,204,255,0.06), transparent 70%); }
   }
 
   /* ─── Scroll Reveal ─────────────────────── */

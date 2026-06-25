@@ -1,6 +1,6 @@
 /* ============================================
    聽雨 — Redesigned
-   Modern text-content theme
+   Modern text-content theme (Write color scheme)
    ============================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -10,26 +10,26 @@
   --font-heading: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
 
-  /* Light mode */
-  --bg: #faf8f5;
+  /* Light mode — Write palette */
+  --bg: #fafafa;
   --surface: #ffffff;
-  --surface-hover: #f8f6f2;
-  --text: #1a1a2e;
-  --text-secondary: #6b7280;
-  --text-tertiary: #9ca3af;
-  --accent: #d97706;
-  --accent-subtle: #fef3c7;
-  --accent-hover: #b45309;
-  --border: #e5e7eb;
-  --border-light: #f3f4f6;
+  --surface-hover: #f5f5f5;
+  --text: #141414;
+  --text-secondary: #666;
+  --text-tertiary: #999;
+  --accent: #0099ff;
+  --accent-subtle: rgba(0,153,255,0.08);
+  --accent-hover: #0077cc;
+  --border: #e0e0e0;
+  --border-light: #ebebeb;
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
   --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
   --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
   --shadow-xl: 0 12px 48px rgba(0,0,0,0.1);
   --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.03), 0 4px 16px rgba(0,0,0,0.02);
   --shadow-card-hover: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.08), 0 16px 48px rgba(0,0,0,0.06);
-  --shadow-card-glow: 0 0 0 1px rgba(217,119,6,0.2), 0 4px 12px rgba(217,119,6,0.08), 0 8px 28px rgba(217,119,6,0.1), 0 16px 48px rgba(0,0,0,0.06);
-  --gradient: linear-gradient(135deg, #d97706, #f59e0b);
+  --shadow-card-glow: 0 0 0 1px rgba(0,153,255,0.2), 0 4px 12px rgba(0,153,255,0.08), 0 8px 28px rgba(0,153,255,0.1), 0 16px 48px rgba(0,0,0,0.06);
+  --gradient: linear-gradient(135deg, #0099ff, #4db8ff);
 
   /* Layout */
   --width-content: 680px;
@@ -40,24 +40,25 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0f0f1a;
-    --surface: #1a1a2e;
-    --surface-hover: #222240;
-    --text: #e5e7eb;
-    --text-secondary: #9ca3af;
-    --text-tertiary: #6b7280;
-    --accent: #f59e0b;
-    --accent-subtle: rgba(245,158,11,0.1);
-    --accent-hover: #d97706;
-    --border: #2d2d4a;
-    --border-light: #1f1f38;
+    --bg: #1a1a1a;
+    --surface: #222;
+    --surface-hover: #2a2a2a;
+    --text: #e5e5e5;
+    --text-secondary: #aaa;
+    --text-tertiary: #888;
+    --accent: #4db8ff;
+    --accent-subtle: rgba(77,184,255,0.1);
+    --accent-hover: #80ccff;
+    --border: #333;
+    --border-light: #2a2a2a;
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
     --shadow-md: 0 4px 12px rgba(0,0,0,0.3);
     --shadow-lg: 0 8px 30px rgba(0,0,0,0.4);
     --shadow-xl: 0 12px 48px rgba(0,0,0,0.5);
     --shadow-card: 0 1px 3px rgba(0,0,0,0.2), 0 2px 8px rgba(0,0,0,0.15);
     --shadow-card-hover: 0 2px 8px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.4), 0 16px 48px rgba(0,0,0,0.3);
-    --shadow-card-glow: 0 0 0 1px rgba(245,158,11,0.15), 0 4px 12px rgba(245,158,11,0.1), 0 12px 32px rgba(245,158,11,0.08);
+    --shadow-card-glow: 0 0 0 1px rgba(77,184,255,0.15), 0 4px 12px rgba(77,184,255,0.1), 0 12px 32px rgba(77,184,255,0.08);
+    --gradient: linear-gradient(135deg, #4db8ff, #80ccff);
   }
 }
 
