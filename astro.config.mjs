@@ -4,7 +4,7 @@ import sitemap from "@astrojs/sitemap";
 import rehypeSlug from "rehype-slug";
 
 export default defineConfig({
-  site: "https://tingyu.wahsun.org",
+  site: "https://c92d58.github.io/Blog",
   integrations: [mdx(), sitemap()],
   markdown: {
     shikiConfig: {
