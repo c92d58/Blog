@@ -2,7 +2,7 @@
 title: 'Fail2ban + SSH 審計聯動：VPS 公網最佳防護方案'
 description: '一套完整的 SSH 暴力破解防護方案，整合 Fail2ban、Systemd 日誌與審計記錄，實現即時封禁、可回溯、不誤傷公鑰使用者的生產級配置。'
 date: 2026-06-04
-tags: ['Linux', '安全', 'SSH', 'Fail2ban', 'DevOps', '伺服器']
+tags: ['安全', 'DevOps']
 draft: true
 ---
 

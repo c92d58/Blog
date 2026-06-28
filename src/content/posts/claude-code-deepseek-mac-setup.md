@@ -2,7 +2,7 @@
 title: 'Mac 終端機新手包：安裝並用 Claude Code + DeepSeek 寫程式'
 description: '從零開始，在 Mac 終端機安裝 Claude Code，並串接中國 DeepSeek API 做為程式開發助手——最適閤中文使用者的 CI 級 AI 開發環境設定指南'
 date: 2026-06-11
-tags: ['AI', 'Claude', 'DeepSeek', 'Mac', '開發工具', '教學']
+tags: ['AI', '教學']
 draft: true
 ---
 
