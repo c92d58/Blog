@@ -45,6 +45,10 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString("en-US", {
       <time datetime={date.toISOString()}>{formattedDate}</time>
       {readingTime && <span class="meta-dot">·</span>}
       {readingTime && <span class="reading-time">閱讀 {readingTime} 分鐘</span>}
+      <span class="meta-dot">·</span>
+      <span id="busuanzi_container_page_pv" class="view-count">
+        <span id="busuanzi_value_page_pv"></span> 次閱讀
+      </span>
     </div>
     {updatedDate && (
       <p class="article-updated">
@@ -85,6 +89,8 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString("en-US", {
     </nav>
   )}
 </article>
+
+<script is:inline src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
 
 <style>
   .article {
@@ -129,6 +135,15 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString("en-US", {
 
   .reading-time {
     color: var(--text-tertiary);
+  }
+
+  .view-count {
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    color: var(--text-tertiary);
+  }
+  .view-count span {
+    font-variant-numeric: tabular-nums;
   }
 
   .article-updated {
