@@ -34,7 +34,10 @@ const ogImageAbs = new URL(ogImage, Astro.site).href;
   <body>
     <nav class="nav">
       <div class="nav-inner">
-        <a href="/" class="logo">WAHSUN ｜ Blog</a>
+        <a href="/" class="logo-wrap">
+          <span class="logo-icon">W</span>
+          <span class="logo-text">WAHSUN<span style="font-weight:300;color:var(--fg3)">.Blog</span></span>
+        </a>
         <button class="tt" id="tt" aria-label="切換主題">
           <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           <svg class="mo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>

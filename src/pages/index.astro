@@ -15,7 +15,8 @@ const posts = allPosts.slice(0, perPage);
     <div class="hero-inner container">
       <p class="label"><span class="d"></span> Dispatches · {allPosts.length} posts</p>
       <h1>記錄思考的痕跡</h1>
-      <p class="bio">這裡沒有聳動的標題，也沒有急著說服的論點。只是一個人在深夜寫下來的東西——關於系統、關於認知、關於那些反覆出現卻始終沒有答案的問題。</p>
+      <p class="slogan">在喧囂中，留一點安靜</p>
+      <p class="bio">這裡沒有聳動的標題，也沒有急著說服的論點。只是一個人在深夜寫下來的東西。</p>
       <div class="actions">
         <a href="#posts" class="btn btn-p">閱讀文章</a>
         <a href="mailto:x@wahsun.org" class="btn">聯絡我</a>
@@ -36,8 +37,14 @@ const posts = allPosts.slice(0, perPage);
             <div class="pl-meta">#{i + 1}</div>
             <div class="pl-title">{p.data.title}</div>
             <div class="pl-desc">{p.data.description?.slice(0,80)}...</div>
+            <div class="pl-bottom">
+              <div class="pl-tags">{(p.data.tags||[]).slice(0,3).map(t => `<span class="pl-tag">${t}</span>`).join('')}</div>
+              <span class="pl-readtime">{readingTime(p.body)} min</span>
+            </div>
           </div>
-          <div class="pl-date">{p.data.date.toLocaleDateString("zh-TW",{year:"numeric",month:"short",day:"numeric"})}</div>
+          <div class="pl-date">{
+            p.data.date.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})
+          }</div>
         </a>
       ))}
     </div>
