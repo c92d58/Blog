@@ -1,71 +1,32 @@
 ---
 import Layout from "../../components/Layout.astro";
-import Article from "../../components/Article.astro";
 import { render } from "astro:content";
 import { getPublishedPosts, readingTime } from "../../lib/posts";
 
 export async function getStaticPaths() {
-  const posts = await getPublishedPosts();
-  return posts.map((post, index) => ({
-    params: { slug: post.id },
-    props: {
-      post,
-      prevPost: index > 0
-        ? { id: posts[index - 1].id, title: posts[index - 1].data.title }
-        : undefined,
-      nextPost: index < posts.length - 1
-        ? { id: posts[index + 1].id, title: posts[index + 1].data.title }
-        : undefined,
-    },
-  }));
+  return (await getPublishedPosts()).map(p => ({params:{slug:p.id},props:{post:p}}));
 }
 
-const { post, prevPost, nextPost } = Astro.props;
-const { Content, headings } = await render(post);
-
-const postReadingTime = readingTime(post.body);
-const postUrl = new URL(`/posts/${post.id}`, Astro.site).href;
-const ogImage = `/og/${post.id}.png`;
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": post.data.title,
-  "description": post.data.description,
-  "datePublished": post.data.date.toISOString(),
-  ...(post.data.updatedDate && { "dateModified": post.data.updatedDate.toISOString() }),
-  "url": postUrl,
-  "keywords": post.data.tags.length > 0 ? post.data.tags.join(", ") : undefined,
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": postUrl,
-  },
-  "author": {
-    "@type": "Person",
-    "name": "WAHSUN",
-    "url": "https://tingyu.wahsun.org",
-  },
-  "publisher": {
-    "@type": "Person",
-    "name": "WAHSUN",
-    "url": "https://tingyu.wahsun.org",
-  },
-};
+const { post } = Astro.props;
+const { Content } = await render(post);
+const all = await getPublishedPosts();
+const idx = all.findIndex(p=>p.id===post.id);
+const prev = idx > 0 ? all[idx-1] : null;
+const next = idx < all.length-1 ? all[idx+1] : null;
 ---
 
-<Layout title={`${post.data.title} — BLOG`} description={post.data.description} ogType="article" ogImage={ogImage}>
-  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-  <Article
-    title={post.data.title}
-    date={post.data.date}
-    updatedDate={post.data.updatedDate}
-    description={post.data.description}
-    tags={post.data.tags}
-    readingTime={postReadingTime}
-    headings={headings}
-    prevPost={prevPost}
-    nextPost={nextPost}
-  >
-    <Content />
-  </Article>
+<Layout title={`${post.data.title} — WAHSUN ｜ Blog`} description={post.data.description}>
+  <article class="article">
+    <a href="/" class="art-back">← 返回首頁</a>
+    <h1 class="art-title">{post.data.title}</h1>
+    <div class="art-meta">
+      <time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString("zh-TW",{year:"numeric",month:"long",day:"numeric"})}</time>
+      <span>·</span><span>{readingTime(post.body)} 分鐘</span>
+    </div>
+    <div class="prose"><Content /></div>
+    <nav class="pnav">
+      {prev ? <a href={`/posts/${prev.id}`}><div class="pnl">← Previous</div><div class="pnt">{prev.data.title}</div></a> : <div></div>}
+      {next ? <a href={`/posts/${next.id}`} style="text-align:right"><div class="pnl">Next →</div><div class="pnt">{next.data.title}</div></a> : <div></div>}
+    </nav>
+  </article>
 </Layout>

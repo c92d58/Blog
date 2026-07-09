@@ -1,248 +1,50 @@
 ---
 import Layout from "../components/Layout.astro";
-import Heading from "../components/Heading.astro";
-import { getPublishedPosts } from "../lib/posts";
+import { getPublishedPosts, readingTime } from "../lib/posts";
 
 const allPosts = await getPublishedPosts();
-const featured = allPosts[0];
-const restPosts = allPosts.slice(1);
-const totalPages = Math.ceil(allPosts.length / 9);
+const perPage = 10;
+const totalPages = Math.ceil(allPosts.length / perPage);
+const page = 1;
+const posts = allPosts.slice(0, perPage);
+
 ---
 
-<Layout title="WAHSUNの自留地">
-  <section class="home">
-
-    <!-- ─── Hero ─────────────────────────────── -->
-    <header class="hero">
-      <h1 class="hero-title animate-fade-up delay-1">
-        <span class="hero-gradient">WAHSUNの自留地</span>
-      </h1>
-      <p class="hero-desc animate-fade-up delay-2">
-        一個人在試圖穿透自己頭腦中的迷霧時，留下的筆記。
-      </p>
-    </header>
-
-    <!-- ─── Featured Post ─────────────────────── -->
-    {featured && (
-      <article class="featured card animate-fade-up delay-3">
-        <a href={`/posts/${featured.id}`} class="featured-link">
-          <span class="tag">最新文章</span>
-          <h2 class="featured-title">{featured.data.title}</h2>
-          <p class="featured-desc">{featured.data.description}</p>
-          <time class="featured-date" datetime={featured.data.date.toISOString()}>
-            {featured.data.date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
-          </time>
-        </a>
-      </article>
-    )}
-
-    <!-- ─── All Posts ─────────────────────────── -->
-    <div class="section-label-wrap">
-      <span class="section-label">所有文章</span>
+<Layout title="WAHSUN ｜ Blog" description="在伺服器與思緒之間遊走。">
+  <section class="hero">
+    <div class="hero-inner container">
+      <p class="label"><span class="d"></span> Dispatches · {allPosts.length} posts</p>
+      <h1>記錄思考的痕跡</h1>
+      <p class="bio">這裡沒有聳動的標題，也沒有急著說服的論點。只是一個人在深夜寫下來的東西——關於系統、關於認知、關於那些反覆出現卻始終沒有答案的問題。</p>
+      <div class="actions">
+        <a href="#posts" class="btn btn-p">閱讀文章</a>
+        <a href="mailto:x@wahsun.org" class="btn">聯絡我</a>
+      </div>
     </div>
+    <div class="scroll-hint"><span></span></div>
+  </section>
 
-    <ul class="post-list">
-      {
-        restPosts.map((post, i) => {
-          const formattedDate = post.data.date.toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          });
-          return (
-            <li class="post-item ink-border animate-fade-up delay-{Math.min(i + 1, 6)}" data-index={i + 2}>
-              <a href={`/posts/${post.id}`}>
-                <span class="post-meta">
-                  <span class="post-number">#{(i + 2).toString().padStart(2, '0')}</span>
-                  <time datetime={post.data.date.toISOString()}>{formattedDate}</time>
-                </span>
-                <span class="post-title">{post.data.title}</span>
-                <span class="post-description">{post.data.description}</span>
-              </a>
-            </li>
-          );
-        })
-      }
-    </ul>
-
-    {totalPages > 1 && (
-      <nav class="pagination" aria-label="Pagination">
-        <span class="pagination-info">第 1 頁，共 {totalPages} 頁</span>
-        <a href="/page/2" class="pagination-link">
-          較舊文章
-          <span class="pagination-arrow">→</span>
+  <section class="posts-section container" id="posts">
+    <div class="sec-head">
+      <h2>最新文章</h2>
+      <span class="pl-date" style="font-size:.8125rem;color:var(--fg3)">第 1 頁 / 共 {totalPages} 頁</span>
+    </div>
+    <div class="posts">
+      {posts.map((p,i) => (
+        <a href={`/posts/${p.id}`} class="post-item" style={`transition-delay:${i*50}ms`}>
+          <div>
+            <div class="pl-meta">#{i + 1}</div>
+            <div class="pl-title">{p.data.title}</div>
+            <div class="pl-desc">{p.data.description?.slice(0,80)}...</div>
+          </div>
+          <div class="pl-date">{p.data.date.toLocaleDateString("zh-TW",{year:"numeric",month:"short",day:"numeric"})}</div>
         </a>
-      </nav>
-    )}
+      ))}
+    </div>
+    <nav class="pager">
+      <span></span>
+      <a href="/page/2" class="btn">下一頁 →</a>
+    </nav>
   </section>
 </Layout>
-
-<style>
-  .home { padding: 2rem 0 4rem; }
-
-  /* ─── Hero ──────────────────────────────── */
-  .hero {
-    text-align: center;
-    padding: 4rem 0 3rem;}
-  .hero-title {
-    font-family: var(--font-heading);
-    font-size: 3rem;
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 0.75rem;
-  }
-  .hero-gradient {
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .hero-desc {
-    font-size: 0.9375rem;
-    color: var(--text-tertiary);
-    max-width: 500px;
-    margin: 0 auto 1rem;
-    line-height: 1.6;
-  }
-
-  /* ─── Featured Post ──────────────────────── */
-  .featured { margin-bottom: 2rem; }
-  .featured-link {
-    display: block;
-    padding: 1.5rem;
-    text-decoration: none;
-    color: var(--text);
-  }
-  .featured:hover .featured-title {
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .featured-title {
-    font-family: var(--font-heading);
-    font-size: 1.25rem;
-    font-weight: 700;
-    line-height: 1.35;
-    margin-top: 0.75rem;
-    transition: color 0.3s;
-  }
-  .featured-desc {
-    font-size: 0.9375rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-top: 0.5rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .featured-date {
-    font-family: var(--font-heading);
-    font-size: 0.75rem;
-    color: var(--text-tertiary);
-    display: block;
-    margin-top: 0.75rem;
-  }
-
-  /* ─── All Posts label ────────────────────── */
-  .section-label-wrap {
-    margin: 2.5rem 0 1.25rem;
-  }
-
-  /* ─── Post List ──────────────────────────── */
-  .post-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  /* ─── Post Item ──────────────────────────── */
-  .post-item {
-    padding: 1.25rem;
-    background: var(--surface);
-    transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
-  }
-  .post-item:hover {
-    border-color: var(--accent);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
-  }
-  .post-item a {
-    display: flex;
-    flex-direction: column;
-    gap: 0.375rem;
-    text-decoration: none;
-    color: var(--text);
-  }
-  .post-item time {
-    font-family: var(--font-heading);
-    font-size: 0.75rem;
-    color: var(--text-tertiary);
-  }
-  .post-title {
-    font-family: var(--font-heading);
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: 1.35;
-    transition: color 0.2s;
-  }
-  .post-item a:hover .post-title {
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .post-description {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  /* ─── Pagination ────────────────────────── */
-  .pagination {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
-  }
-  .pagination-info {
-    font-family: var(--font-heading);
-    font-size: 0.75rem;
-    color: var(--text-tertiary);
-  }
-  .pagination-link {
-    font-family: var(--font-heading);
-    font-size: 0.8125rem;
-    font-weight: 500;
-    color: var(--text);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.375rem;
-    transition: color 0.2s;
-  }
-  .pagination-link:hover { color: var(--accent); }
-  .pagination-arrow {
-    transition: transform 0.2s;
-  }
-  .pagination-link:hover .pagination-arrow {
-    transform: translateX(2px);
-  }
-
-  /* ─── Responsive ────────────────────────── */
-  @media (max-width: 600px) {
-    .hero { padding: 2rem 0 1.5rem; }
-    .hero-title { font-size: 2.25rem; }
-    .featured-link { padding: 1.25rem; }
-    .post-item { padding: 1rem; }
-  }
-</style>
+</Layout>
