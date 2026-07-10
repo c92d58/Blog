@@ -216,7 +216,7 @@ article hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; 
 .pager a { font-family: var(--font-mono); font-size: .72rem; }
 
 /* ─── Article page ─── */
-.article { padding: 6rem 0 4rem; }
+.article { padding: 6rem 0 4rem; max-width: var(--w); margin: 0 auto; padding-left: 1.5rem; padding-right: 1.5rem; }
 .art-back { font-family: var(--font-mono); font-size: .68rem; color: var(--text3); text-decoration: none; display: inline-block; margin-bottom: 1.5rem; transition: color .2s; text-transform: uppercase; letter-spacing: .04em; }
 .art-back:hover { color: var(--g); }
 .art-title { font-family: var(--font-mono); font-size: 1.3rem; font-weight: 800; color: var(--g); letter-spacing: .04em; margin-bottom: .75rem; line-height: 1.3; }
