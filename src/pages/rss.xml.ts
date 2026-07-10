@@ -6,8 +6,8 @@ export async function GET(context: APIContext) {
   const posts = await getPublishedPosts();
 
   return rss({
-    title: "聽雨",
-    description: "在雨聲中，讀懂人性的溫度。",
+    title: "WAHSUN ｜ Blog",
+    description: "思考、書寫、懷疑，然後重新開始！",
     site: context.site!,
     items: posts.map((post) => ({
       title: post.data.title,
