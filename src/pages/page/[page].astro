@@ -18,7 +18,7 @@ const { posts, page, totalPages } = Astro.props;
   <section class="posts-section container" style="padding-top:6rem">
     <div class="sec-head">
       <h2>文章列表</h2>
-      <span style="font-size:.8125rem;color:var(--fg3)">第 {page} 頁 / 共 {totalPages} 頁</span>
+      <span style="font-size:.8125rem;color:var(--text3)">第 {page} 頁 / 共 {totalPages} 頁</span>
     </div>
     <div class="posts">
       {posts.map((p, i) => (

@@ -11,7 +11,7 @@ const notes = allPosts.filter(p => (p.data.tags||[]).some(t => techTags.includes
   <section class="container" style="padding-top:6rem">
     <a href="/" class="art-back">← 返回首頁</a>
     <h1 class="art-title" style="margin-bottom:.5rem">技術筆記</h1>
-    <p style="font-family:var(--font-sans);font-size:.75rem;color:var(--fg3);margin-bottom:2.5rem">{notes.length} 篇 · 伺服器、工具、配置</p>
+    <p style="font-family:var(--font-sans);font-size:.75rem;color:var(--text3);margin-bottom:2.5rem">{notes.length} 篇 · 伺服器、工具、配置</p>
 
     <div class="entries">
       {notes.map((p, i) => (
