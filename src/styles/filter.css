@@ -1,0 +1,17 @@
+/* Tag Filter — Matrix style */
+.tag-filter {
+  display: flex; gap: .5rem; flex-wrap: wrap;
+  margin-bottom: 2rem; padding: .75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.tf-btn {
+  font-family: var(--font-mono); font-size: .68rem;
+  padding: 3px 10px; border-radius: 2px;
+  border: 1px solid var(--border); background: transparent;
+  color: var(--text3); cursor: pointer;
+  transition: all .2s; white-space: nowrap;
+  text-transform: uppercase; letter-spacing: .06em;
+}
+.tf-btn:hover { border-color: var(--g); color: var(--g); background: var(--accent-bg); }
+.tf-btn.active { background: var(--g); color: var(--bg); border-color: var(--g); }
+.post-item.hidden { display: none; }

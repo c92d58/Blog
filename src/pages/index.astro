@@ -13,16 +13,14 @@ const posts = allPosts.slice(0, perPage);
 <Layout title="WAHSUN ｜ Blog" description="在伺服器與思緒之間遊走。">
   <section class="hero">
     <div class="hero-inner container">
-      <p class="label"><span class="d"></span> Dispatches · {allPosts.length} posts</p>
-      <h1>記錄思考的痕跡</h1>
-      <p class="slogan">在喧囂中，留一點安靜</p>
-      <p class="bio">這裡沒有聳動的標題，也沒有急著說服的論點。只是一個人在深夜寫下來的東西。</p>
+      <p class="label"><span class="d"></span> 關於作者</p>
+      <p class="bio">一個對世界充滿好奇心的人，在伺服器與思緒之間遊走。維護一些安靜運行的服務，寫一些個人使用的程式碼，讀一些讓自己變得更清醒的東西。</p>
       <div class="actions">
         <a href="#posts" class="btn btn-p">閱讀文章</a>
-        <a href="mailto:x@wahsun.org" class="btn">聯絡我</a>
+        <a href="mailto:x@wahsun.org" class="btn">聯繫郵箱</a>
       </div>
     </div>
-    <div class="scroll-hint"><span></span></div>
+    <div class="scroll-hint"><a href="#posts"><div class="scroll-pill"><span></span></div></a></div>
   </section>
 
   <section class="posts-section container" id="posts">
@@ -36,11 +34,10 @@ const posts = allPosts.slice(0, perPage);
           <div>
             <div class="pl-meta">#{i + 1}</div>
             <div class="pl-title">{p.data.title}</div>
-            <div class="pl-desc">{p.data.description?.slice(0,80)}...</div>
-            <div class="pl-bottom">
-              <div class="pl-tags">{(p.data.tags||[]).slice(0,3).map(t => `<span class="pl-tag">${t}</span>`).join('')}</div>
-              <span class="pl-readtime">{readingTime(p.body)} min</span>
-            </div>
+            <div class="pl-desc">{p.data.description}</div>
+              <div class="pl-tags">
+                {(p.data.tags||[]).slice(0,3).map(t => <span class="pl-tag">{t}</span>)}
+              </div>
           </div>
           <div class="pl-date">{
             p.data.date.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})
