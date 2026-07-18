@@ -13,28 +13,25 @@ const posts = allPosts.slice(0, perPage);
 <Layout title="WAHSUN Blog" description="在伺服器與思緒之間遊走。">
   <section class="hero">
     <div class="hero-inner container">
-      <!-- 終端機打字機效果 -->
-      <div class="terminal" id="terminal">
-        <div class="term-bar">
-          <span class="term-dot term-dot-r"></span>
-          <span class="term-dot term-dot-y"></span>
-          <span class="term-dot term-dot-g"></span>
-          <span class="term-title">wahsun@blog — about.txt</span>
-        </div>
-        <div class="term-body">
-          <div class="term-line">
-            <span class="term-prompt">wahsun@blog:~$</span>
-            <span class="term-cmd">cat about.txt</span>
+      <!-- 駭客帝國終端對話 -->
+      <div class="crt" id="crt">
+        <div class="crt-scanline"></div>
+        <div class="term-win">
+          <div class="term-bar">
+            <span class="t-dot t-dot-r"></span>
+            <span class="t-dot t-dot-y"></span>
+            <span class="t-dot t-dot-g"></span>
+            <span class="t-title">matrix@wahsun:~/session</span>
           </div>
-          <div class="term-output" id="term-output"></div>
-          <div class="term-line" id="term-next" style="display:none">
-            <span class="term-prompt">wahsun@blog:~$</span>
-            <span class="term-cursor">█</span>
+          <div class="term-body" id="termBody"></div>
+          <div class="term-cursor-line" id="cursorLine">
+            <span class="t-prompt">matrix@wahsun:~$</span>
+            <span class="t-cursor" id="tcursor">█</span>
           </div>
         </div>
       </div>
       <div class="actions">
-        <a href="mailto:x@wahsun.org" class="btn">聯繫郵箱</a>
+        <a href="#posts" class="btn">閱讀文章 →</a>
       </div>
     </div>
     <div class="scroll-hint"><a href="#posts"><div class="scroll-pill"><span></span></div></a></div>
@@ -71,26 +68,72 @@ const posts = allPosts.slice(0, perPage);
 </Layout>
 
 <script>
-  const bio = '一個對世界充滿好奇心的人，在伺服器與思緒之間遊走。維護一些安靜運行的服務，寫一些個人使用的程式碼，讀一些讓自己變得更清醒的東西。';
-  const output = document.getElementById('term-output');
-  const nextLine = document.getElementById('term-next');
+// 駭客帝國終端對話腳本
+const dialog = [
+  { type: 'system', text: '[SYSTEM] 檢測到未知訪客。掃描中……' },
+  { type: 'visitor', text: './connect --query="這是什麼地方"' },
+  { type: 'system', text: '[SYSTEM] 查詢結果：wahsun.org 節點。' },
+  { type: 'system', text: '          一個人的筆記節點。伺服器低鳴，螢幕亮著這些年寫下的東西。' },
+  { type: 'system', text: '          無演算法干預，無KPI追蹤，純文字信號。' },
+  { type: 'visitor', text: './whoami' },
+  { type: 'system', text: '[SYSTEM] 身份：WAHSUN' },
+  { type: 'system', text: '          對世界充滿好奇心的人。在伺服器與思緒之間遊走。' },
+  { type: 'system', text: '          維護安靜運行的服務，寫個人使用的程式碼，讀讓自己清醒的書。' },
+  { type: 'visitor', text: './contact' },
+  { type: 'system', text: '[SYSTEM] 通道：x@wahsun.org' },
+  { type: 'system', text: '          信號已送達。期待你的傳輸。' },
+];
 
-  let i = 0;
-  function type() {
-    if (i < bio.length) {
-      output.textContent += bio[i];
-      i++;
-      const delay = bio[i - 1] === '，' || bio[i - 1] === '。' ? 150 : 50 + Math.random() * 30;
-      setTimeout(type, delay);
-    } else {
-      // Show next prompt line after typing completes
-      setTimeout(() => {
-        nextLine.style.display = 'flex';
-      }, 400);
-    }
+const body = document.getElementById('termBody');
+const cursorLine = document.getElementById('cursorLine');
+const cursor = document.getElementById('tcursor');
+let step = 0;
+let charPos = 0;
+let typing = false;
+
+function runStep() {
+  if (step >= dialog.length) {
+    cursorLine.style.display = 'flex';
+    cursor.style.animation = 'blink 0.6s step-end infinite';
+    return;
   }
+  const s = dialog[step];
+  const line = document.createElement('div');
+  line.className = 't-line';
 
-  // Start typing after page load
-  setTimeout(type, 600);
+  if (s.type === 'system') {
+    line.innerHTML = '<span class="t-out">' + s.text + '</span>';
+  } else {
+    line.innerHTML = '<span class="t-prompt">matrix@wahsun:~$</span> <span class="t-cmd"></span>';
+  }
+  body.appendChild(line);
+  line.scrollIntoView({ behavior: 'smooth', block: 'end' });
+
+  const textEl = s.type === 'system'
+    ? line.querySelector('.t-out')
+    : line.querySelector('.t-cmd');
+
+  charPos = 0;
+  typing = true;
+  typeText(s.text, textEl);
+}
+
+function typeText(text, el) {
+  if (charPos < text.length) {
+    el.textContent += text[charPos];
+    charPos++;
+    const ch = text[charPos - 1];
+    const pause = ch === '，' || ch === '。' || ch === '！' || ch === '？' ? 120 : 30 + Math.random() * 25;
+    setTimeout(() => typeText(text, el), pause);
+  } else {
+    typing = false;
+    step++;
+    const pause = step >= dialog.length ? 500 : 600;
+    setTimeout(runStep, pause);
+  }
+}
+
+cursorLine.style.display = 'none';
+setTimeout(runStep, 400);
 </script>
 </Layout>

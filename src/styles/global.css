@@ -191,88 +191,109 @@ article hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; 
 /* Dark mode toggle icon hide (dark only) */
 .tt { display: none; }
 
-/* ─── Terminal typewriter ─── */
-.terminal {
-  background: rgba(0,0,0,.35);
-  border: 1px solid var(--border);
+/* ─── 駭客帝國 CRT 終端 ─── */
+.crt {
+  position: relative;
+  max-width: 560px;
+  margin: 0 auto 1.5rem;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 0 30px rgba(0,255,136,.06), 0 0 60px rgba(0,255,136,.03), inset 0 0 30px rgba(0,0,0,.5);
+}
+.crt-scanline {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,.08) 2px,
+    rgba(0,0,0,.08) 4px
+  );
+}
+.term-win {
+  background: #0a0a0f;
+  border: 1px solid rgba(0,255,136,.15);
   border-radius: 6px;
   overflow: hidden;
-  margin-bottom: 1.5rem;
-  max-width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.term-win::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  background: conic-gradient(from 0deg, transparent, rgba(0,255,136,.08), transparent, rgba(0,255,136,.08), transparent);
+  animation: rotateGlow 8s linear infinite;
+}
+@keyframes rotateGlow {
+  to { transform: rotate(360deg); }
 }
 .term-bar {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 10px 14px;
-  background: rgba(255,255,255,.02);
-  border-bottom: 1px solid var(--border);
+  padding: 8px 12px;
+  background: rgba(0,255,136,.03);
+  border-bottom: 1px solid rgba(0,255,136,.08);
 }
-.term-dot {
-  width: 10px; height: 10px;
+.t-dot {
+  width: 8px; height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
 }
-.term-dot-r { background: #ff5f56; }
-.term-dot-y { background: #ffbd2e; }
-.term-dot-g { background: #27c93f; }
-.term-title {
+.t-dot-r { background: #ff5f56; }
+.t-dot-y { background: #ffbd2e; }
+.t-dot-g { background: #27c93f; }
+.t-title {
   flex: 1;
   text-align: center;
   font-family: var(--font-mono);
-  font-size: .62rem;
+  font-size: .6rem;
   color: var(--text3);
-  letter-spacing: .04em;
-  margin-right: 30px; /* offset to center */
+  letter-spacing: .06em;
 }
 .term-body {
-  padding: 14px 16px;
-  min-height: 80px;
+  padding: 14px 14px 6px;
+  min-height: 100px;
 }
-.term-line {
-  display: flex;
-  align-items: baseline;
-  gap: .6rem;
-  margin-bottom: .5rem;
-}
-.term-prompt {
-  font-family: var(--font-mono);
-  font-size: .72rem;
-  color: var(--g);
-  white-space: nowrap;
-  user-select: none;
-}
-.term-cmd {
-  font-family: var(--font-mono);
-  font-size: .72rem;
-  color: var(--text);
-  user-select: none;
-}
-.term-output {
-  font-family: var(--font-mono);
-  font-size: .78rem;
-  color: var(--text);
-  line-height: 1.9;
-  min-height: 3.6em;
-  white-space: pre-wrap;
-  word-break: break-all;
-}
-.term-cursor {
+.t-line {
   font-family: var(--font-mono);
   font-size: .75rem;
+  line-height: 1.7;
+  margin-bottom: 4px;
+  word-break: break-word;
+}
+.t-prompt {
   color: var(--g);
-  animation: blink 1s step-end infinite;
+  flex-shrink: 0;
+  user-select: none;
+}
+.t-cmd {
+  color: #c0e0c0;
+}
+.t-out {
+  color: var(--g3, #66bb6a);
+  opacity: .85;
+}
+.term-cursor-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px 14px;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+}
+.t-cursor {
+  color: var(--g);
+  animation: blink 0.6s step-end infinite;
 }
 @keyframes blink {
-  0%, 100% { opacity: 1; }
+  0%,100% { opacity: 1; }
   50% { opacity: 0; }
-}
-
-/* Terminal responsive */
-@media (max-width: 640px) {
-  .term-body { padding: 10px 12px; }
-  .term-prompt, .term-cmd { font-size: .65rem; }
-  .term-output { font-size: .7rem; }
 }
 
 /* Hero layout */
