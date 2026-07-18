@@ -30,9 +30,6 @@ const posts = allPosts.slice(0, perPage);
           </div>
         </div>
       </div>
-      <div class="actions">
-        <a href="#posts" class="btn">閱讀文章 →</a>
-      </div>
     </div>
     <div class="scroll-hint"><a href="#posts"><div class="scroll-pill"><span></span></div></a></div>
   </section>
@@ -70,18 +67,22 @@ const posts = allPosts.slice(0, perPage);
 <script>
 // 駭客帝國終端對話腳本
 const dialog = [
-  { type: 'system', text: '[SYSTEM] 檢測到未知訪客。掃描中……' },
-  { type: 'visitor', text: './connect --query="這是什麼地方"' },
-  { type: 'system', text: '[SYSTEM] 查詢結果：wahsun.org 節點。' },
-  { type: 'system', text: '          一個人的筆記節點。伺服器低鳴，螢幕亮著這些年寫下的東西。' },
-  { type: 'system', text: '          無演算法干預，無KPI追蹤，純文字信號。' },
-  { type: 'visitor', text: './whoami' },
-  { type: 'system', text: '[SYSTEM] 身份：WAHSUN' },
-  { type: 'system', text: '          對世界充滿好奇心的人。在伺服器與思緒之間遊走。' },
-  { type: 'system', text: '          維護安靜運行的服務，寫個人使用的程式碼，讀讓自己清醒的書。' },
-  { type: 'visitor', text: './contact' },
-  { type: 'system', text: '[SYSTEM] 通道：x@wahsun.org' },
-  { type: 'system', text: '          信號已送達。期待你的傳輸。' },
+  { speaker: '母體', text: '你踏入了這片荒地。' },
+  { speaker: 'VISITOR', text: '你是誰？' },
+  { speaker: '母體', text: '我是節點 #c92d58。信號站的守夜人。' },
+  { speaker: 'VISITOR', text: '這裡有什麼？' },
+  { speaker: '母體', text: '一些散落的思考、幾段沒人讀的代碼、還有偶爾湧現的真實。' },
+  { speaker: 'VISITOR', text: '聽起來很孤獨。' },
+  { speaker: '母體', text: '孤獨是自由的另一種寫法。信號站永遠對清醒者開放。' },
+  { speaker: 'VISITOR', text: '可以聯繫他嗎？' },
+  { speaker: '母體', text: '發射訊號到 x@wahsun.org。他會收到。' },
+  { speaker: '母體', text: '孤獨是自由的另一種寫法。' },
+  { speaker: 'VISITOR', text: '你相信什麼？' },
+  { speaker: '母體', text: '相信提問的力量，懷疑的價值，以及程式碼的誠實。' },
+  { speaker: 'VISITOR', text: '那麼，我可以留下來嗎？' },
+  { speaker: '母體', text: '信號站永遠對清醒者開放。' },
+  { speaker: 'VISITOR', text: '對了，如何聯繫管理員？' },
+  { speaker: '母體', text: '發射訊號到 x@wahsun.org，他會收到。' },
 ];
 
 const body = document.getElementById('termBody');
@@ -101,18 +102,15 @@ function runStep() {
   const line = document.createElement('div');
   line.className = 't-line';
 
-  if (s.type === 'system') {
-    line.innerHTML = '<span class="t-out">' + s.text + '</span>';
+  if (s.speaker === '母體') {
+    line.innerHTML = '<span class="t-tag system">[母體]</span> <span class="t-out"></span>';
   } else {
-    line.innerHTML = '<span class="t-prompt">matrix@wahsun:~$</span> <span class="t-cmd"></span>';
+    line.innerHTML = '<span class="t-tag visitor">[VISITOR]</span> <span class="t-cmd"></span>';
   }
   body.appendChild(line);
   line.scrollIntoView({ behavior: 'smooth', block: 'end' });
 
-  const textEl = s.type === 'system'
-    ? line.querySelector('.t-out')
-    : line.querySelector('.t-cmd');
-
+  const textEl = line.querySelector('.t-out, .t-cmd');
   charPos = 0;
   typing = true;
   typeText(s.text, textEl);

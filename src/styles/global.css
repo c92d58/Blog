@@ -279,6 +279,15 @@ article hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; 
   color: var(--g3, #66bb6a);
   opacity: .85;
 }
+.t-tag {
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  user-select: none;
+}
+.t-tag.system { color: var(--g); }
+.t-tag.visitor { color: var(--blue, #4499ff); }
 .term-cursor-line {
   display: flex;
   align-items: center;
