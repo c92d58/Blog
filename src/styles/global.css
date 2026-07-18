@@ -88,6 +88,13 @@ a:hover { opacity: 0.8; }
 .logo-wrap { display: flex; align-items: center; gap: .5rem; }
 .logo-mark { display: flex; align-items: center; gap: 0; }
 .logo-mark svg { display: block; flex-shrink: 0; }
+.logo-mark svg polyline {
+  animation: breathe 2.4s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%, 100% { opacity: .4; }
+  50% { opacity: 1; }
+}
 .logo-text {
   font-family: var(--font-mono); font-weight: 600; font-size: .85rem;
   letter-spacing: .12em; color: var(--g); text-transform: uppercase;
