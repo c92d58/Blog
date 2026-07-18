@@ -191,119 +191,24 @@ article hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; 
 /* Dark mode toggle icon hide (dark only) */
 .tt { display: none; }
 
-/* ─── 駭客帝國 CRT 終端 ─── */
-.crt {
-  position: relative;
-  max-width: 560px;
-  margin: 0 auto 1.5rem;
-  overflow: hidden;
-  border-radius: 6px;
-  box-shadow: 0 0 30px rgba(0,255,136,.06), 0 0 60px rgba(0,255,136,.03), inset 0 0 30px rgba(0,0,0,.5);
-}
-.crt-scanline {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0,0,0,.08) 2px,
-    rgba(0,0,0,.08) 4px
-  );
-}
-.term-win {
-  background: #0a0a0f;
-  border: 1px solid rgba(0,255,136,.15);
-  border-radius: 6px;
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
-}
-.term-win::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  z-index: -1;
-  background: conic-gradient(from 0deg, transparent, rgba(0,255,136,.08), transparent, rgba(0,255,136,.08), transparent);
-  animation: rotateGlow 8s linear infinite;
-}
-@keyframes rotateGlow {
-  to { transform: rotate(360deg); }
-}
-.term-bar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
-  background: rgba(0,255,136,.03);
-  border-bottom: 1px solid rgba(0,255,136,.08);
-}
-.t-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.t-dot-r { background: #ff5f56; }
-.t-dot-y { background: #ffbd2e; }
-.t-dot-g { background: #27c93f; }
-.t-title {
-  flex: 1;
-  text-align: center;
-  font-family: var(--font-mono);
-  font-size: .6rem;
-  color: var(--text3);
-  letter-spacing: .06em;
-}
-.term-body {
-  padding: 14px 14px 6px;
-  min-height: 100px;
-}
-.t-line {
-  font-family: var(--font-mono);
-  font-size: .75rem;
-  line-height: 1.7;
-  margin-bottom: 4px;
-  word-break: break-word;
-}
-.t-prompt {
-  color: var(--g);
-  flex-shrink: 0;
-  user-select: none;
-}
-.t-cmd {
-  color: #c0e0c0;
-}
-.t-out {
-  color: var(--g3, #66bb6a);
-  opacity: .85;
-}
-.t-tag {
-  font-family: var(--font-mono);
-  font-size: .6rem;
-  font-weight: 600;
-  flex-shrink: 0;
-  user-select: none;
-}
-.t-tag.system { color: var(--g); }
-.t-tag.visitor { color: var(--blue, #4499ff); }
-.term-cursor-line {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 14px 14px;
-  font-family: var(--font-mono);
-  font-size: .75rem;
-}
-.t-cursor {
-  color: var(--g);
-  animation: blink 0.6s step-end infinite;
-}
-@keyframes blink {
-  0%,100% { opacity: 1; }
-  50% { opacity: 0; }
-}
+/* ─── Terminal ─── */
+.terminal{background:var(--card);border:1px solid var(--border);border-radius:2px;max-width:100%;margin-bottom:1.5rem;overflow:hidden}
+.term-bar{border-bottom:1px solid var(--border);background:#ffffff05;align-items:center;gap:6px;padding:10px 14px;display:flex}
+.term-dot{border-radius:50%;flex-shrink:0;width:10px;height:10px}
+.term-dot-r{background:#ff5f56}
+.term-dot-y{background:#ffbd2e}
+.term-dot-g{background:#27c93f}
+.term-title{text-align:center;font-family:var(--font-mono);color:var(--text3);letter-spacing:.04em;flex:1;margin-right:30px;font-size:.62rem}
+.term-body{padding:14px 16px}
+.term-line{align-items:baseline;gap:.5rem;margin:0 0 2px;line-height:1.5;display:flex}
+.term-prompt{font-family:var(--font-mono);color:var(--g);white-space:nowrap;user-select:none;opacity:.8;font-size:.7rem}
+.term-cmd{font-family:var(--font-mono);color:var(--text);user-select:none;font-size:.7rem}
+.term-system{font-family:var(--font-mono);color:var(--g);white-space:nowrap;user-select:none;opacity:.8;font-size:.7rem;flex-shrink:0}
+.term-visitor{font-family:var(--font-mono);color:#ff8c42;white-space:nowrap;user-select:none;font-size:.7rem;flex-shrink:0}
+.term-output{font-family:var(--font-mono);color:var(--text);white-space:pre-wrap;word-break:break-word;font-size:.78rem;line-height:1.5}
+.term-cursor{font-family:var(--font-mono);color:var(--g);font-size:.7rem;animation:blink 1.2s ease-in-out infinite}
+@keyframes blink{0%,to{opacity:1}50%{opacity:0}}
+@media(max-width:640px){.term-body{padding:10px 12px}.term-prompt,.term-cmd,.term-system,.term-visitor{font-size:.65rem}.term-output{font-size:.7rem}}
 
 /* Hero layout */
 .hero-inner { padding-top: 2rem; }

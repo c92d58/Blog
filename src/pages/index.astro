@@ -13,21 +13,16 @@ const posts = allPosts.slice(0, perPage);
 <Layout title="WAHSUN Blog" description="在伺服器與思緒之間遊走。">
   <section class="hero">
     <div class="hero-inner container">
-      <!-- 駭客帝國終端對話 -->
-      <div class="crt" id="crt">
-        <div class="crt-scanline"></div>
-        <div class="term-win">
-          <div class="term-bar">
-            <span class="t-dot t-dot-r"></span>
-            <span class="t-dot t-dot-y"></span>
-            <span class="t-dot t-dot-g"></span>
-            <span class="t-title">matrix@wahsun:~/session</span>
-          </div>
-          <div class="term-body" id="termBody"></div>
-          <div class="term-cursor-line" id="cursorLine">
-            <span class="t-prompt">matrix@wahsun:~$</span>
-            <span class="t-cursor" id="tcursor">█</span>
-          </div>
+      <div class="terminal">
+        <div class="term-bar">
+          <span class="term-dot term-dot-r"></span>
+          <span class="term-dot term-dot-y"></span>
+          <span class="term-dot term-dot-g"></span>
+          <span class="term-title">wahsun@blog — session.log</span>
+        </div>
+        <div class="term-body" id="termBody">
+          <div class="term-line"><span class="term-prompt">wahsun@blog:~$</span><span class="term-cmd">ssh wahsun@blog</span></div>
+          <div class="term-line"><span class="term-prompt">wahsun@blog:~$</span><span class="term-cmd">cat session.log</span></div>
         </div>
       </div>
     </div>
@@ -65,73 +60,74 @@ const posts = allPosts.slice(0, perPage);
 </Layout>
 
 <script>
-// 駭客帝國終端對話腳本
-const dialog = [
-  { speaker: '母體', text: '你踏入了這片荒地。' },
-  { speaker: 'VISITOR', text: '你是誰？' },
-  { speaker: '母體', text: '我是節點 #c92d58。信號站的守夜人。' },
-  { speaker: 'VISITOR', text: '這裡有什麼？' },
-  { speaker: '母體', text: '一些散落的思考、幾段沒人讀的代碼、還有偶爾湧現的真實。' },
-  { speaker: 'VISITOR', text: '聽起來很孤獨。' },
-  { speaker: '母體', text: '孤獨是自由的另一種寫法。信號站永遠對清醒者開放。' },
-  { speaker: 'VISITOR', text: '可以聯繫他嗎？' },
-  { speaker: '母體', text: '發射訊號到 x@wahsun.org。他會收到。' },
-  { speaker: '母體', text: '孤獨是自由的另一種寫法。' },
-  { speaker: 'VISITOR', text: '你相信什麼？' },
-  { speaker: '母體', text: '相信提問的力量，懷疑的價值，以及程式碼的誠實。' },
-  { speaker: 'VISITOR', text: '那麼，我可以留下來嗎？' },
-  { speaker: '母體', text: '信號站永遠對清醒者開放。' },
-  { speaker: 'VISITOR', text: '對了，如何聯繫管理員？' },
-  { speaker: '母體', text: '發射訊號到 x@wahsun.org，他會收到。' },
+var dialog=[
+  {speaker:'VISITOR',text:'你是誰？'},
+  {speaker:'母體',text:'我是節點 #c92d58。信號站的守夜人。'},
+  {speaker:'VISITOR',text:'這裡有什麼？'},
+  {speaker:'母體',text:'一些散落的思考、幾段沒人讀的代碼、還有偶爾湧現的真實。'},
+  {speaker:'VISITOR',text:'聽起來很孤獨。'},
+  {speaker:'母體',text:'孤獨是自由的另一種寫法。信號站永遠對清醒者開放。'},
+  {speaker:'VISITOR',text:'可以聯繫他嗎？'},
+  {speaker:'母體',text:'發射訊號到 x@wahsun.org。他會收到。'},
+  {speaker:'母體',text:'孤獨是自由的另一種寫法。'},
+  {speaker:'VISITOR',text:'你相信什麼？'},
+  {speaker:'母體',text:'相信提問的力量，懷疑的價值，以及程式碼的誠實。'},
+  {speaker:'VISITOR',text:'那麼，我可以留下來嗎？'},
+  {speaker:'母體',text:'信號站永遠對清醒者開放。'},
+  {speaker:'VISITOR',text:'對了，如何聯繫管理員？'},
+  {speaker:'母體',text:'發射訊號到 x@wahsun.org，他會收到。'},
 ];
 
-const body = document.getElementById('termBody');
-const cursorLine = document.getElementById('cursorLine');
-const cursor = document.getElementById('tcursor');
-let step = 0;
-let charPos = 0;
-let typing = false;
+var t=document.getElementById('termBody');
+var n=0,r=0,i=null;
 
-function runStep() {
-  if (step >= dialog.length) {
-    cursorLine.style.display = 'flex';
-    cursor.style.animation = 'blink 0.6s step-end infinite';
+function a(visitor){
+  var line=document.createElement('div');
+  line.className='term-line';
+  var label=document.createElement('span');
+  label.className=visitor?'term-visitor':'term-system';
+  label.textContent=visitor?'VISITOR':'wahsun@blog:~$';
+  var out=document.createElement('span');
+  out.className='term-output';
+  line.appendChild(label);
+  line.appendChild(out);
+  t.appendChild(line);
+  return out;
+}
+
+function o(){
+  if(n>=dialog.length){
+    var line=document.createElement('div');
+    line.className='term-line';
+    var prompt=document.createElement('span');
+    prompt.className='term-system';
+    prompt.textContent='wahsun@blog:~$';
+    var cursor=document.createElement('span');
+    cursor.className='term-cursor';
+    cursor.textContent='█';
+    line.appendChild(prompt);
+    line.appendChild(cursor);
+    t.appendChild(line);
     return;
   }
-  const s = dialog[step];
-  const line = document.createElement('div');
-  line.className = 't-line';
-
-  if (s.speaker === '母體') {
-    line.innerHTML = '<span class="t-tag system">[母體]</span> <span class="t-out"></span>';
-  } else {
-    line.innerHTML = '<span class="t-tag visitor">[VISITOR]</span> <span class="t-cmd"></span>';
+  if(!i){
+    i=a(dialog[n].speaker==='VISITOR');
+    r=0;
   }
-  body.appendChild(line);
-  line.scrollIntoView({ behavior: 'smooth', block: 'end' });
-
-  const textEl = line.querySelector('.t-out, .t-cmd');
-  charPos = 0;
-  typing = true;
-  typeText(s.text, textEl);
-}
-
-function typeText(text, el) {
-  if (charPos < text.length) {
-    el.textContent += text[charPos];
-    charPos++;
-    const ch = text[charPos - 1];
-    const pause = ch === '，' || ch === '。' || ch === '！' || ch === '？' ? 120 : 30 + Math.random() * 25;
-    setTimeout(() => typeText(text, el), pause);
-  } else {
-    typing = false;
-    step++;
-    const pause = step >= dialog.length ? 500 : 600;
-    setTimeout(runStep, pause);
+  var text=dialog[n].text;
+  if(r<text.length){
+    i.textContent+=text[r];
+    r++;
+    var ch=text[r-1];
+    var pause=ch==='，'||ch==='。'||ch==='！'||ch==='？'?120:35+Math.random()*25;
+    setTimeout(o,pause);
+  }else{
+    n++;
+    i=null;
+    setTimeout(o,250);
   }
 }
 
-cursorLine.style.display = 'none';
-setTimeout(runStep, 400);
+setTimeout(o,800);
 </script>
 </Layout>
