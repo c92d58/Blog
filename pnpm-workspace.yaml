@@ -1,0 +1,8 @@
+packages:
+  - "."
+allowBuilds:
+  esbuild: true
+  sharp: true
+overrides:
+  yaml: 2.9.0
+  esbuild: 0.28.1

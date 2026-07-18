@@ -1,0 +1,30 @@
+---
+import Layout from "../components/Layout.astro";
+import { getPublishedPosts } from "../lib/posts";
+
+const allPosts = await getPublishedPosts();
+const techTags = ["伺服器","教學","DevOps","Linux","VPS","AI","安全","Fail2ban","SSH","Claude","DeepSeek","Mac","開發工具","Hermes Agent","自架部署","開源"];
+const notes = allPosts.filter(p => (p.data.tags||[]).some(t => techTags.includes(t)));
+---
+
+<Layout title="技術筆記 — WAHSUN Blog">
+  <section class="container" style="padding-top:6rem">
+    <a href="/" class="art-back">← 返回首頁</a>
+    <h1 class="art-title" style="margin-bottom:.5rem">技術筆記</h1>
+    <p style="font-family:var(--font-sans);font-size:.75rem;color:var(--text3);margin-bottom:2.5rem">{notes.length} 篇 · 伺服器、工具、配置</p>
+
+    <div class="entries">
+      {notes.map((p, i) => (
+        <a href={`/posts/${p.id}`} class="entry">
+          <div class="entry-title">{p.data.title}</div>
+          <div class="entry-meta">
+            <span>{p.data.date.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})}</span>
+            {(p.data.tags||[]).filter(t => techTags.includes(t)).slice(0,3).map(t => (
+              <><span class="entry-dot"></span><span class="entry-label">{t}</span></>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</Layout>

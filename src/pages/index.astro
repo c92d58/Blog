@@ -1,0 +1,96 @@
+---
+import Layout from "../components/Layout.astro";
+import { getPublishedPosts, readingTime } from "../lib/posts";
+
+const allPosts = await getPublishedPosts();
+const perPage = 10;
+const totalPages = Math.ceil(allPosts.length / perPage);
+const page = 1;
+const posts = allPosts.slice(0, perPage);
+
+---
+
+<Layout title="WAHSUN Blog" description="在伺服器與思緒之間遊走。">
+  <section class="hero">
+    <div class="hero-inner container">
+      <!-- 終端機打字機效果 -->
+      <div class="terminal" id="terminal">
+        <div class="term-bar">
+          <span class="term-dot term-dot-r"></span>
+          <span class="term-dot term-dot-y"></span>
+          <span class="term-dot term-dot-g"></span>
+          <span class="term-title">wahsun@blog — about.txt</span>
+        </div>
+        <div class="term-body">
+          <div class="term-line">
+            <span class="term-prompt">wahsun@blog:~$</span>
+            <span class="term-cmd">cat about.txt</span>
+          </div>
+          <div class="term-output" id="term-output"></div>
+          <div class="term-line" id="term-next" style="display:none">
+            <span class="term-prompt">wahsun@blog:~$</span>
+            <span class="term-cursor">█</span>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <a href="mailto:x@wahsun.org" class="btn">聯繫郵箱</a>
+      </div>
+    </div>
+    <div class="scroll-hint"><a href="#posts"><div class="scroll-pill"><span></span></div></a></div>
+  </section>
+
+  <section class="posts-section container" id="posts">
+    <div class="sec-head">
+      <h2>最新文章</h2>
+      <span class="pl-date" style="font-size:.8125rem;color:var(--text3)">第 1 頁 / 共 {totalPages} 頁</span>
+    </div>
+    <div class="posts">
+      {posts.map((p,i) => (
+        <a href={`/posts/${p.id}`} class="post-item" style={`transition-delay:${i*50}ms`}>
+          <div class="pl-row">
+            <span class="pl-num">#{i + 1}</span>
+            <span class="pl-title">{p.data.title}</span>
+            <span class="pl-meta">
+              <span>{
+                p.data.date.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})
+              }</span>
+              <span class="pl-dot">·</span>
+              <span>{readingTime(p.body)} min read</span>
+            </span>
+          </div>
+          <div class="pl-desc">{p.data.description}</div>
+        </a>
+      ))}
+    </div>
+    <nav class="pager">
+      <span></span>
+      <a href="/page/2" class="btn">下一頁 →</a>
+    </nav>
+  </section>
+</Layout>
+
+<script>
+  const bio = '一個對世界充滿好奇心的人，在伺服器與思緒之間遊走。維護一些安靜運行的服務，寫一些個人使用的程式碼，讀一些讓自己變得更清醒的東西。';
+  const output = document.getElementById('term-output');
+  const nextLine = document.getElementById('term-next');
+
+  let i = 0;
+  function type() {
+    if (i < bio.length) {
+      output.textContent += bio[i];
+      i++;
+      const delay = bio[i - 1] === '，' || bio[i - 1] === '。' ? 150 : 50 + Math.random() * 30;
+      setTimeout(type, delay);
+    } else {
+      // Show next prompt line after typing completes
+      setTimeout(() => {
+        nextLine.style.display = 'flex';
+      }, 400);
+    }
+  }
+
+  // Start typing after page load
+  setTimeout(type, 600);
+</script>
+</Layout>

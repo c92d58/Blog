@@ -1,0 +1,76 @@
+---
+import "../styles/global.css";
+
+interface Props { title: string; description?: string; ogType?: "website" | "article"; ogImage?: string }
+const {
+  title,
+  description = "思考、書寫、懷疑，然後重新開始！",
+  ogType = "website",
+  ogImage = "/hero-bg.jpg"
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImageAbs = new URL(ogImage, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="zh-TW" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0a0a0f" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2032%2032%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%20%20%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%224%22%20fill%3D%22%230a0a0f%22/%3E%0A%20%20%3Crect%20x%3D%220.5%22%20y%3D%220.5%22%20width%3D%2231%22%20height%3D%2231%22%20rx%3D%223.5%22%20stroke%3D%22%2300ff88%22%20opacity%3D%220.15%22/%3E%0A%20%20%3Cpolyline%20points%3D%227%2C11%2017%2C16%207%2C21%22%20stroke%3D%22%2300ff88%22%20stroke-width%3D%222.5%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%0A%20%20%3Cline%20x1%3D%2218%22%20y1%3D%2222%22%20x2%3D%2227%22%20y2%3D%2222%22%20stroke%3D%22%2300ff88%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22/%3E%0A%3C/svg%3E%0A" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="application/rss+xml" title="WAHSUN Blog" href="/rss.xml" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="WAHSUN Blog" />
+    <meta property="og:image" content={ogImageAbs} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-inner">
+        <a href="/" class="logo-wrap">
+          <span class="logo-mark">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="24" height="24" rx="3" fill="var(--g)" opacity=".08"/>
+              <polyline points="6,9 14,12 6,15" stroke="var(--g)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="15" y1="16.5" x2="20" y2="16.5" stroke="var(--g)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="logo-text">WAHSUN Blog</span>
+        </a>
+      </div>
+    </nav>
+    <slot />
+    <footer class="footer">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2026 WAHSUN. All rights reserved.</p>
+      </div>
+    </footer>
+    <script>
+      // Stagger reveal for post items
+      document.querySelectorAll('.post-item').forEach((el,i)=>{
+        el.style.transitionDelay=i*50+'ms';
+        new IntersectionObserver(([e])=>{if(e.isIntersecting){el.classList.add('reveal');e.target._o?.disconnect()}},{threshold:.15,rootMargin:'0px 0px -30px 0px'}).observe(el)
+      });
+
+      // Hero scroll parallax
+      window.addEventListener('scroll',()=>{const h=document.querySelector('.hero');if(h)h.style.setProperty('--scroll',window.scrollY+'px')},{passive:true});
+
+      // Back to top
+      const btt=document.getElementById('btt');
+      if(btt){
+        window.addEventListener('scroll',()=>{btt.classList.toggle('show',window.scrollY>800)},{passive:true});
+        btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+      }
+    </script>
+  </body>
+</html>
